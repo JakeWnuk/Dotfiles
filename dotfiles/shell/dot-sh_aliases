@@ -1,0 +1,160 @@
+# *****
+# Utility
+# *****
+
+# replace dir with better printing
+dir() {
+    if [[ $# -ne 1 ]]; then
+        tree -Cfsh --noreport --dirsfirst
+    else
+        tree -Cfsh --noreport --dirsfirst $1
+    fi
+}
+
+# unqiue sort file
+usort() {
+    if [[ $# -ne 1 ]]; then
+        echo 'unique sort file inplace'
+        echo 'EXAMPLE: usort <FILE>'
+    else
+        LC_ALL=C sort -u $1 -T ./ -o $1
+    fi
+}
+
+# shuffle file file inplace
+ishuf() {
+    if [[ $# -ne 1 ]]; then
+        echo 'shuffle file inplace'
+        echo 'EXAMPLE: ishuf <FILE>'
+    else
+        shuf -o $1 < $1
+    fi
+}
+
+# tmux wrapper
+tmuxx() {
+    if [[ $# -ne 1 ]]; then
+        tmux attach
+    else
+        tmux new -s $1
+    fi
+}
+
+# removes color from stdin or inplace with a file                                                                                                                                                                                                                   
+nocolor(){
+    if [[ $# -ne 1 ]]; then
+        sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'
+    else
+        sed -i 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g' $1
+    fi
+}
+
+# finds non-printable characters
+noprint(){
+    if [[ $# -ne 1 ]]; then
+        grep '[^[:print:]]'
+    else
+        grep '[^[:print:]]' $1
+    fi
+}
+
+# removes case from stdin or file and prints to stdout
+tolower(){
+    if [[ $# -ne 1 ]]; then
+        awk '{print tolower($0)}'
+    else
+        awk '{print tolower($0)}' $1
+    fi
+}
+
+# vimprev functions
+vimprev(){
+    if [[ $# -ge 1 ]]; then
+        if [[ $1 == "sp" || $1 == "spell" ]]; then
+            shift
+            VIMENV=spell vim $@
+        else
+            VIMENV=prev vim $@
+        fi
+    else
+        VIMENV=prev vim $(cat -)
+        tput reset
+    fi
+}
+
+# *****
+# Docker
+# *****
+
+
+# **** Docker Tools ****
+
+# opens dk-hc container
+dk-hc(){
+    docker run --network=host --rm -it --gpus all -v $PWD:/data jwnuk/dk-hashcat "$@"
+}
+
+# opens dk-hashmob container
+dk-hashmob(){
+    docker run --rm -it --volume ${PWD}:/data --env-file ~/.hashmob.env jwnuk/hashmobcli "$@"
+}
+
+# opens hugo container
+dk-webdev(){
+    docker run -p 1313:1313 --volume ${PWD}:/src -it --rm jwnuk/webdev "$@"
+}
+
+# opens metasploit container and mounts ports
+dk-msf(){
+    mkdir -p ~/.msf4
+    docker run --rm -it -v "${HOME}/.msf4:/home/msf/.msf4" --volume ${PWD}:/data -p 8443-8500:8443-8500 metasploitframework/metasploit-framework ./msfconsole -q
+}
+
+# opens ohaserver container
+dk-ohaserver(){
+    docker run --rm -it --net=host --env-file ~/.ohaserver.env  jwnuk/ohaserver
+}
+
+# opens ohaclient container
+dk-ohaclient(){
+    docker run --rm -it --net=host --volume ${PWD}:/data --env-file ~/.ohaclient.env jwnuk/ohaclient "$@"
+}
+
+# **** Docker Utility ****
+
+# opens up a docker container connected to the host network with X11 support
+dk-x11(){
+    if [[ $# -lt 2 ]]; then
+        tput setaf 2;echo 'EXAMPLE: dk-x11 IP-FOR-X11 IMAGE+ARGS'
+        echo ''
+        docker image ls
+        echo ''
+    else
+        docker run -it --rm --net=host --env="QT_X11_NO_MITSHM=1" --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$1:0  --volume ${PWD}:/data "${@:2}"
+    fi
+}
+
+# opens up a docker container for an image on the host network
+dk-host(){
+    if [[ $# -lt 1 ]]; then
+        tput setaf 2;echo 'EXAMPLE: dk-host IMAGE+ARGS'
+        echo ''
+        docker image ls
+        echo ''
+    else
+        docker run --net=host -it --rm --volume ${PWD}:/data "$@"
+    fi
+}
+
+# opens up a docker container for an image
+dk-here(){
+    if [[ $# -lt 1 ]]; then
+        tput setaf 2;echo 'EXAMPLE: dk-here IMAGE+ARGS'
+        echo ''
+        docker image ls
+        echo ''
+    else
+        docker run -it --rm --volume ${PWD}:/data "$@"
+    fi
+}
+

@@ -1,0 +1,30 @@
+[http]
+    headers = [
+        "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
+    ]
+    method = "GET"
+
+[general]
+    autocalibration = false
+    autocalibrationstrings = [
+    "XVlBzgbaiCMRAjWw",
+    "index",
+    "home"
+    ] 
+    colors = true
+    threads = 45
+    verbose = true
+
+[input]
+    ignorewordlistcomments = true
+
+[output]
+    outputformat = "csv"
+    outputcreateemptyfile = false
+
+[filter]
+    status = "302,400,501,502,503,504"
+
+[matcher]
+    status = "all"
+
