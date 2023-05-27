@@ -2,7 +2,6 @@
 FROM ubuntu:devel
 
 # Load configuration files and installers
-ADD ./config/conf.curl /usr/share/grc/conf.curl
 ADD ./config/go-tools.json /tmp/
 ADD ./installers/ ./installers/
 ADD ./dotfiles /root/dotfiles/
@@ -18,4 +17,5 @@ RUN bash ./installers/install-updates.sh && \
 
 # Set environment
 WORKDIR /data
+ADD ./config/conf.curl /usr/share/grc/conf.curl
 ENTRYPOINT ["/usr/bin/zsh"]
