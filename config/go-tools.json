@@ -1,10 +1,6 @@
 {
     "go":[
         {
-            "name":"anew",
-            "url":"github.com/tomnomnom/anew@latest"
-        },
-        {
             "name":"unfurl",
             "url":"github.com/tomnomnom/unfurl@latest"
         },
