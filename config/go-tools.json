@@ -41,6 +41,10 @@
             "url":"github.com/jakewnuk/mode@latest"
         },
         {
+            "name":"diffcat",
+            "url":"github.com/jakewnuk/diffcat@latest"
+        },
+        {
             "name":"rulecat",
             "url":"github.com/jakewnuk/rulecat@latest"
         },
