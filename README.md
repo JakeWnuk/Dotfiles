@@ -24,5 +24,5 @@
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
 #### Tools
-- [tools.json](https://github.com/JakeWnuk/Dotfiles/blob/main/config/tools.json)
+- [go-tools.json](https://github.com/JakeWnuk/Dotfiles/blob/main/config/go-tools.json)
 

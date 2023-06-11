@@ -5,10 +5,6 @@
             "url":"github.com/tomnomnom/unfurl@latest"
         },
         {  
-            "name":"gau",
-            "url":"github.com/lc/gau@latest"
-        },
-        {  
             "name":"katana",
             "url":"github.com/projectdiscovery/katana/cmd/katana@latest"
         },
