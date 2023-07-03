@@ -10,7 +10,6 @@
 
 #### Packages & Repositories
 
-- [docker](https://www.docker.com/resources/what-container)
 - [fzf](https://github.com/junegunn/fzf)
 - [go](https://go.dev/doc/)
 - [grc](https://github.com/garabik/grc)
