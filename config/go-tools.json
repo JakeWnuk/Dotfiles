@@ -1,40 +1,8 @@
 {
     "go":[
         {
-            "name":"unfurl",
-            "url":"github.com/tomnomnom/unfurl@latest"
-        },
-        {  
-            "name":"katana",
-            "url":"github.com/projectdiscovery/katana/cmd/katana@latest"
-        },
-        {  
-            "name":"httpx",
-            "url":"github.com/projectdiscovery/httpx/cmd/httpx@latest"
-        },
-        {  
-            "name":"subfinder",
-            "url":"github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
-        },
-        {
-            "name":"nuclei",
-            "url":"github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest"
-        },
-        {
-            "name":"pencode",
-            "url":"github.com/ffuf/pencode/cmd/pencode@latest"
-        },
-        {
-            "name":"ffuf",
-            "url":"github.com/ffuf/ffuf@latest"
-        },
-        {
             "name":"mode",
             "url":"github.com/jakewnuk/mode@latest"
-        },
-        {
-            "name":"diffcat",
-            "url":"github.com/jakewnuk/diffcat@latest"
         },
         {
             "name":"rulecat",

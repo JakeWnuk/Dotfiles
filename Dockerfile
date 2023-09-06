@@ -13,7 +13,8 @@ RUN bash ./installers/install-updates.sh && \
     bash ./installers/install-grc.sh && \
     bash ./installers/install-go.sh && \
     bash ./installers/install-go-tools.sh && \
-    bash ./installers/install-vim.sh
+    bash ./installers/install-vim.sh && \
+    rm -rf /var/lib/apt/lists/*
 
 # Set environment
 WORKDIR /data
