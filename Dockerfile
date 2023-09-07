@@ -2,19 +2,19 @@
 FROM ubuntu:devel
 
 # Load configuration files and installers
-ADD ./config/go-tools.json /tmp/
-ADD ./installers/ ./installers/
+ADD ./config/ /tmp/config/
+ADD ./installers/ /tmp/installers/
 ADD ./dotfiles /root/dotfiles/
 
 # Run installers
-RUN bash ./installers/install-updates.sh && \
-    bash ./installers/install-dotfiles.sh && \
-    bash ./installers/install-shell.sh && \
-    bash ./installers/install-grc.sh && \
-    bash ./installers/install-go.sh && \
-    bash ./installers/install-go-tools.sh && \
-    bash ./installers/install-vim.sh && \
-    rm -rf /var/lib/apt/lists/*
+RUN bash /tmp/installers/install-updates.sh && \
+    bash /tmp/installers/install-dotfiles.sh && \
+    bash /tmp/installers/install-shell.sh && \
+    bash /tmp/installers/install-grc.sh && \
+    bash /tmp/installers/install-go.sh && \
+    bash /tmp/installers/install-go-tools.sh && \
+    bash /tmp/installers/install-vim.sh && \
+    rm -rf /var/lib/apt/lists/* /tmp/*
 
 # Set environment
 WORKDIR /data

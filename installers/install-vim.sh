@@ -8,6 +8,7 @@ source ~/.bashrc
 
 # Install SpaceVim
 curl -sLf https://spacevim.org/install.sh | bash
+mkdir ~/.SpaceVim/.SpaceVim.d/ && mv /tmp/config/init.toml ~/.SpaceVim.d/init.toml
 
 # Install deps
 echo 'command' | vim +PlugInstall +GoInstallBinaries +qall 2>/dev/null

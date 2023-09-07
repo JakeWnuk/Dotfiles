@@ -67,21 +67,6 @@ tolower(){
     fi
 }
 
-# vimprev functions
-vimprev(){
-    if [[ $# -ge 1 ]]; then
-        if [[ $1 == "sp" || $1 == "spell" ]]; then
-            shift
-            VIMENV=spell vim $@
-        else
-            VIMENV=prev vim $@
-        fi
-    else
-        VIMENV=prev vim $(cat -)
-        tput reset
-    fi
-}
-
 # *****
 # Docker
 # *****
