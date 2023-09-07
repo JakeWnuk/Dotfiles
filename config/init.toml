@@ -41,3 +41,11 @@ default_height = 30
 [[layers]]
   name = "lang#go"
 
+[[layers]]
+  name = "checkers"
+
+[[layers]]
+  name = "format"
+  silent_format = true
+
+
