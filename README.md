@@ -6,7 +6,6 @@
 - .tmux.conf
 - .vimrc
 - .zshrc
-- .ffufrc
 
 #### Packages & Repositories
 
@@ -16,12 +15,7 @@
 - [jq](https://github.com/stedolan/jq)
 - [stow](https://www.gnu.org/software/stow/)
 - [tmux](https://github.com/tmux/tmux)
-- [vim-airline](https://github.com/vim-airline/vim-airline)
-- [vim-go](https://github.com/fatih/vim-go)
-- [vim-plug](https://github.com/junegunn/vim-plug)
+- [spacevim](https://spacevim.org)
 - [z](https://github.com/agkozak/zsh-z)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-
-#### Tools
-- [go-tools.json](https://github.com/JakeWnuk/Dotfiles/blob/main/config/go-tools.json)
 
