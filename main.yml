@@ -15,8 +15,9 @@
         - { src: './dotfiles', dest: '{{ ansible_env.HOME }}/dotfiles/' }
 
     - name: Install updates
+      become: yes
       command:
-        cmd: "sudo bash {{ item }}"
+        cmd: "bash {{ item }}"
       with_items:
         - /tmp/installers/install-updates.sh
 
@@ -39,8 +40,4 @@
       copy:
         src: './config/conf.curl'
         dest: '/usr/share/grc/conf.curl'
-
-    - name: Set zsh as the default shell
-      command:
-        cmd: "chsh -s /usr/bin/zsh"
 
