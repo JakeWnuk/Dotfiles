@@ -2,6 +2,7 @@
 - hosts: localhost
   tasks:
     - name: Ensure APT is up-to-date
+      become: yes
       apt:
         update_cache: yes
 
@@ -33,6 +34,7 @@
         - /tmp/installers/install-vim.sh
 
     - name: Clean up APT and tmp
+      become: yes
       command:
         cmd: "rm -rf /var/lib/apt/lists/* /tmp/*"
 

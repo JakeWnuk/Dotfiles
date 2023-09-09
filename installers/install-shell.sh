@@ -10,5 +10,5 @@ mkdir ~/.zsh/ && wget -O ~/.zsh/zsh-z.plugin.zsh $URL
 
 # Source and set shell
 source ~/.bashrc; source ~/.zshrc
-chsh -s $(which zsh) $(whoami)
-
+echo "/usr/bin/zsh" | sudo tee -a /etc/shells
+sudo chsh -s /usr/bin/zsh $(whoami)
