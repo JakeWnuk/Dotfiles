@@ -27,5 +27,6 @@ docker build . -t dotfiles
 
 Ansible
 ```
+apt update && apt install -y ansible
 ansible-playbook main.yml
 ```

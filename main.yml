@@ -12,13 +12,18 @@
       with_items:
         - { src: './config/', dest: '/tmp/config/' }
         - { src: './installers/', dest: '/tmp/installers/' }
-        - { src: './dotfiles', dest: '/root/dotfiles/' }
+        - { src: './dotfiles', dest: '{{ ansible_env.HOME }}/dotfiles/' }
+
+    - name: Install updates
+      command:
+        cmd: "sudo bash {{ item }}"
+      with_items:
+        - /tmp/installers/install-updates.sh
 
     - name: Run installers
       command:
         cmd: "bash {{ item }}"
       with_items:
-        - /tmp/installers/install-updates.sh
         - /tmp/installers/install-dotfiles.sh
         - /tmp/installers/install-shell.sh
         - /tmp/installers/install-grc.sh
