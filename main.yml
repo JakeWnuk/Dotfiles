@@ -1,0 +1,41 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Ensure APT is up-to-date
+      apt:
+        update_cache: yes
+
+    - name: Copy configuration files and installers
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      with_items:
+        - { src: './config/', dest: '/tmp/config/' }
+        - { src: './installers/', dest: '/tmp/installers/' }
+        - { src: './dotfiles', dest: '/root/dotfiles/' }
+
+    - name: Run installers
+      command:
+        cmd: "bash {{ item }}"
+      with_items:
+        - /tmp/installers/install-updates.sh
+        - /tmp/installers/install-dotfiles.sh
+        - /tmp/installers/install-shell.sh
+        - /tmp/installers/install-grc.sh
+        - /tmp/installers/install-go.sh
+        - /tmp/installers/install-pipx.sh
+        - /tmp/installers/install-vim.sh
+
+    - name: Clean up APT and tmp
+      command:
+        cmd: "rm -rf /var/lib/apt/lists/* /tmp/*"
+
+    - name: Copy conf.curl to /usr/share/grc/
+      copy:
+        src: './config/conf.curl'
+        dest: '/usr/share/grc/conf.curl'
+
+    - name: Set zsh as the default shell
+      command:
+        cmd: "chsh -s /usr/bin/zsh"
+

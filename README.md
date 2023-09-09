@@ -19,3 +19,13 @@
 - [z](https://github.com/agkozak/zsh-z)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
+#### Install
+Docker
+```
+docker build . -t dotfiles
+```
+
+Ansible
+```
+ansible-playbook main.yml
+```
