@@ -11,8 +11,8 @@
 
 - [fzf](https://github.com/junegunn/fzf)
 - [go](https://go.dev/doc/)
+- [pipx](https://github.com/pypa/pipx)
 - [grc](https://github.com/garabik/grc)
-- [jq](https://github.com/stedolan/jq)
 - [stow](https://www.gnu.org/software/stow/)
 - [tmux](https://github.com/tmux/tmux)
 - [spacevim](https://spacevim.org)

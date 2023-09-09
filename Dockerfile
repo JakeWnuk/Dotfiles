@@ -12,6 +12,7 @@ RUN bash /tmp/installers/install-updates.sh && \
     bash /tmp/installers/install-shell.sh && \
     bash /tmp/installers/install-grc.sh && \
     bash /tmp/installers/install-go.sh && \
+    bash /tmp/installers/install-pipx.sh && \
     bash /tmp/installers/install-vim.sh && \
     rm -rf /var/lib/apt/lists/* /tmp/*
 
