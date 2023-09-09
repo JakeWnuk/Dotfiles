@@ -11,5 +11,5 @@ curl -sLf https://spacevim.org/install.sh | bash
 mkdir -p ~/.SpaceVim.d/ && mv /tmp/config/init.toml ~/.SpaceVim.d/init.toml
 
 # Install deps
-echo 'command' | vim +PlugInstall +GoInstallBinaries +qall 2>/dev/null
+echo 'command' | vim +SPUpdate +GoInstallBinaries +qall 2>/dev/null
 
