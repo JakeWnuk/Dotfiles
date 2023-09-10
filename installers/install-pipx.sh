@@ -11,7 +11,7 @@ python3 -m pipx ensurepath
 
 source ~/.bashrc
 
-pipx install pylint
-pipx install yapf
-pipx install autoflake
-pipx install isort
+~/.local/bin/pipx install pylint
+~/.local/bin/pipx install yapf
+~/.local/bin/pipx install autoflake
+~/.local/bin/pipx install isort

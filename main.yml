@@ -35,10 +35,15 @@
 
     - name: Clean up APT and tmp
       become: yes
-      command:
-        cmd: "rm -rf /var/lib/apt/lists/* /tmp/*"
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+          - /var/lib/apt/lists/*
+          - /tmp/*
 
     - name: Copy conf.curl to /usr/share/grc/
+      become: yes
       copy:
         src: './config/conf.curl'
         dest: '/usr/share/grc/conf.curl'
