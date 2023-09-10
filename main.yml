@@ -13,7 +13,7 @@
       with_items:
         - { src: './config/', dest: '/tmp/config/' }
         - { src: './installers/', dest: '/tmp/installers/' }
-        - { src: './dotfiles', dest: '{{ ansible_env.HOME }}/dotfiles/' }
+        - { src: './dotfiles', dest: '{{ ansible_env.HOME }}/' }
 
     - name: Install updates
       become: yes
