@@ -2,8 +2,8 @@
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-z.plugin.zsh
 autoload -U compinit && compinit
-source /root/.fzf/shell/key-bindings.zsh
-source /root/.fzf/shell/completion.zsh
+source ~/.fzf/shell/key-bindings.zsh
+source ~/.fzf/shell/completion.zsh
 
 # mute terminal
 unsetopt BEEP

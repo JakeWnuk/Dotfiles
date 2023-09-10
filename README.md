@@ -20,13 +20,17 @@
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
 #### Install
+```
+git clone https://github.com/JakeWnuk/Dotfiles
+```
 Docker
 ```
 docker build . -t dotfiles
+docker run -it --rm --volume ${PWD}:/data dotfiles
 ```
 
 Ansible
 ```
-apt update && apt install -y ansible
+sudo apt update && sudo apt install -y ansible
 ansible-playbook main.yml
 ```
