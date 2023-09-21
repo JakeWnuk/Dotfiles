@@ -90,11 +90,11 @@ export PORTS_HTTP_XL='80,81,300,443,591,593,832,981,1010,1311,2082,2087,2095,209
 export PORTS_HTTP='80,443,8080,8443'
 
 # Prompt colours
-nameC="%F{#ffffff}"
-hostC="%F{#ffffff}"
-pathC="%F{172}"
-gitC="%F{245}"
-pointerC="%F{34}"
+nameC="%F{51}"      # Bright Cyan
+hostC="%F{51}"      # Bright Cyan
+pathC="%F{51}"      # Bright Cyan
+gitC="%F{51}"       # Bright Cyan
+pointerC="%F{7}"    # Silver
 
 # Prompt
 NEWLINE=$'\n'

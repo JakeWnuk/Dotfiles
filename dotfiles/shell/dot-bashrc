@@ -67,12 +67,12 @@ txtwht='\[\e[0;37m\]' # White
 txtrst='\[\e[0m\]'    # Text Reset
 
 # Prompt colours
-atC="${txtgrn}"
-nameC="${txtwht}"
-hostC="${txtwht}"
-pathC="${txtblu}"
-gitC="${txtcyn}"
-pointerC="${txtgrn}"
+atC="${txtgrn}"                                                                                                                   
+nameC="${txtcyn}"  # Bright Cyan                                                                                                                 
+hostC="${txtcyn}"  # Bright Cyan                                                                                                                 
+pathC="${txtcyn}"  # Bright Cyan
+gitC="${txtcyn}"  # Bright Cyan
+pointerC="${txtwht}"  # Silver
 normalC="${txtrst}"
 borderC="${txtgrn}"
 
