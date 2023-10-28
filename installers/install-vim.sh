@@ -6,10 +6,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 # NOTE: Souce go binary before attempting CLI plugin install
 source ~/.bashrc
 
-# Install SpaceVim
-curl -sLf https://spacevim.org/install.sh | bash
-mkdir -p ~/.SpaceVim.d/ && mv /tmp/config/init.toml ~/.SpaceVim.d/init.toml
-
 # Install deps
 vim +GoInstallBinaries +qall 2>/dev/null
 
