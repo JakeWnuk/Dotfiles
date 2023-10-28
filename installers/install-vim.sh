@@ -9,3 +9,6 @@ source ~/.bashrc
 # Install deps
 echo 'command' | vim +PlugInstall +GoInstallBinaries +qall 2>/dev/null
 
+# Install copilot
+git clone https://github.com/github/copilot.vim ~/.vim/pack/github/start/copilot.vim
+
