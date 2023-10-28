@@ -11,6 +11,17 @@ dir() {
     fi
 }
 
+# sort file by frequency 
+mode() {
+      awk '{
+        freq[$0]++
+      }
+    END {
+      for(line in freq)
+        printf "%d\t%s\n", freq[line], line | "sort -rn"
+    }' "$@"
+}
+
 # unqiue sort file
 usort() {
     if [[ $# -ne 1 ]]; then
