@@ -18,7 +18,7 @@ mode() {
       }
     END {
       for(line in freq)
-        printf "%d\t%s\n", freq[line], line | "sort -rn"
+        printf "%d\t%s\n", freq[line], line | "LC_ALL=C sort -rn"
     }' "$@"
 }
 
