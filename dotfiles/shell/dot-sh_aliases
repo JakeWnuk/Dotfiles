@@ -22,6 +22,16 @@ mode() {
     }' "$@"
 }
 
+# only print new lines not in file
+onlynew() {
+    if [[ $# -ne 1 ]]; then
+        echo 'only print new items not in file'
+        echo 'EXAMPLE: onlynew <FILE>'
+    else
+        awk 'FNR==NR {a[$0]++; next} !($0 in a)' $1 -
+    fi 
+}
+
 # unqiue sort file
 usort() {
     if [[ $# -ne 1 ]]; then
