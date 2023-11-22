@@ -18,3 +18,7 @@ else
     echo "/usr/bin/zsh" >> /etc/shells
     chsh -s /usr/bin/zsh $(whoami)
 fi
+
+# Copy over history file
+cp /tmp/config/historyfile.txt ~/.zsh_history
+cp /tmp/config/historyfile.txt ~/.bash_history

