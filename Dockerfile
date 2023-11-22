@@ -22,5 +22,5 @@ ADD ./config/conf.curl /usr/share/grc/conf.curl
 ENTRYPOINT ["/usr/bin/zsh"]
 
 # Set entrypoint as a tmux session
-ENTRYPOINT ["/usr/bin/tmux", "new-session", "-s", "main"]
+#ENTRYPOINT ["/usr/bin/tmux", "new-session", "-s", "main"]
 
