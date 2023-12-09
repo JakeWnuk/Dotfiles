@@ -13,13 +13,7 @@ dir() {
 
 # sort file by frequency 
 mode() {
-      awk '{
-        freq[$0]++
-      }
-    END {
-      for(line in freq)
-        printf "%d\t%s\n", freq[line], line | "LC_ALL=C sort -rn"
-    }' "$@"
+    sort -T ./ | uniq -c | sort -nr -T ./
 }
 
 # only print new lines not in file
