@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL=https://go.dev/dl/go1.21.3.linux-amd64.tar.gz
+URL=https://go.dev/dl/go1.21.5.linux-amd64.tar.gz
 wget -O /tmp/go.linux-amd64.tar.gz $URL
 
 if command -v sudo > /dev/null; then
