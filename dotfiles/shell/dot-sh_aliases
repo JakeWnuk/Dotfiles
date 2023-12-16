@@ -13,7 +13,11 @@ dir() {
 
 # sort file by frequency 
 mode() {
-    sort -T ./ | uniq -c | sort -nr -T ./
+    if [[ $# -ne 1 ]]; then
+        LC_ALL=C sort -T ./ | uniq -c | LC_ALL=C sort -rn -T ./
+    else
+        LC_ALL=C sort -T ./ $1 | uniq -c | LC_ALL=C sort -rn -T ./
+    fi
 }
 
 # only print new lines not in file
