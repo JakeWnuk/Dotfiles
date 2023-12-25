@@ -14,6 +14,7 @@ RUN bash /tmp/installers/install-updates.sh && \
     bash /tmp/installers/install-go.sh && \
     bash /tmp/installers/install-pipx.sh && \
     bash /tmp/installers/install-vim.sh && \
+    bash /tmp/installers/install-tools.sh && \
     rm -rf /var/lib/apt/lists/* /tmp/*
 
 # Set environment

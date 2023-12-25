@@ -32,6 +32,7 @@
         - /tmp/installers/install-go.sh
         - /tmp/installers/install-pipx.sh
         - /tmp/installers/install-vim.sh
+        - /tmp/installers/install-tools.sh
 
     - name: Clean up APT and tmp
       become: yes
