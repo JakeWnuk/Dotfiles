@@ -106,19 +106,6 @@ let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 2
 let g:airline_theme='tender'
 
-" vimprev
-if $VIMENV == 'prev'
-  noremap <Space> :n<CR>
-  noremap <Backspace> :N<CR>
-  set noswapfile
-endif
-
-" vimspell
-if $VIMENV == 'spell'
-    set spell
-    set spell spelllang=en_us
-    noremap <Space> ]s
-    noremap <Backspace> [s
-    noremap <Enter> z=
-endif
+" jump between buffers with shift-tab
+nnoremap <silent> <S-Tab> :bprevious<CR>
 
