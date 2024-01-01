@@ -20,5 +20,6 @@ RUN bash /tmp/installers/install-updates.sh && \
 # Set environment
 WORKDIR /data
 ADD ./config/conf.curl /usr/share/grc/conf.curl
+ADD ./config/nginx.conf /etc/nginx/nginx.conf
 ENTRYPOINT ["/usr/bin/zsh"]
 
