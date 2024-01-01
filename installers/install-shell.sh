@@ -20,5 +20,5 @@ else
 fi
 
 # Copy over history file
-cp /tmp/config/historyfile.txt ~/.zsh_history
-cp /tmp/config/historyfile.txt ~/.bash_history
+cp /tmp/config/sh_history.txt ~/.zsh_history
+cp /tmp/config/sh_history.txt ~/.bash_history
