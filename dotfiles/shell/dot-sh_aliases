@@ -24,7 +24,7 @@ mode() {
 onlynew() {
     if [[ $# -ne 1 ]]; then
         echo 'only print new items not in file'
-        echo 'EXAMPLE: onlynew <FILE>'
+        echo 'EXAMPLE: stdin | onlynew <FILE>'
     else
         awk 'FNR==NR {a[$0]++; next} !($0 in a)' $1 -
     fi 
@@ -33,20 +33,9 @@ onlynew() {
 # unqiue sort file
 usort() {
     if [[ $# -ne 1 ]]; then
-        echo 'unique sort file inplace'
-        echo 'EXAMPLE: usort <FILE>'
+        LC_ALL=C sort -u -T ./
     else
         LC_ALL=C sort -u $1 -T ./ -o $1
-    fi
-}
-
-# shuffle file file inplace
-ishuf() {
-    if [[ $# -ne 1 ]]; then
-        echo 'shuffle file inplace'
-        echo 'EXAMPLE: ishuf <FILE>'
-    else
-        shuf -o $1 < $1
     fi
 }
 
@@ -112,16 +101,6 @@ dk-webdev(){
 dk-msf(){
     mkdir -p ~/.msf4
     docker run --rm -it -v "${HOME}/.msf4:/home/msf/.msf4" --volume ${PWD}:/data -p 8443-8500:8443-8500 metasploitframework/metasploit-framework ./msfconsole -q
-}
-
-# opens ohaserver container
-dk-ohaserver(){
-    docker run --rm -it --net=host --env-file ~/.ohaserver.env  jwnuk/ohaserver
-}
-
-# opens ohaclient container
-dk-ohaclient(){
-    docker run --rm -it --net=host --volume ${PWD}:/data --env-file ~/.ohaclient.env jwnuk/ohaclient "$@"
 }
 
 # **** Docker Utility ****
