@@ -33,6 +33,7 @@
         - /tmp/installers/install-pipx.sh
         - /tmp/installers/install-vim.sh
         - /tmp/installers/install-tools.sh
+        - /tmp/installers/install-wordlists.sh
 
     - name: Clean up APT and tmp
       become: yes
@@ -49,3 +50,14 @@
         src: './config/conf.curl'
         dest: '/usr/share/grc/conf.curl'
 
+    - name: Copy nginx.conf to /etc/nginx/
+      become: yes
+      copy:
+        src: './config/nginx.conf'
+        dest: '/etc/nginx/conf.curl'
+
+    - name: Copy wordlists to /usr/share/wordlists/
+      become: yes
+      copy:
+        src: './config/wordlists'
+        dest: '/usr/share/wordlists'

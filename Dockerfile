@@ -15,11 +15,13 @@ RUN bash /tmp/installers/install-updates.sh && \
     bash /tmp/installers/install-pipx.sh && \
     bash /tmp/installers/install-vim.sh && \
     bash /tmp/installers/install-tools.sh && \
+    bash /tmp/installers/install-wordlists.sh && \
     rm -rf /var/lib/apt/lists/* /tmp/*
 
 # Set environment
 WORKDIR /data
 ADD ./config/conf.curl /usr/share/grc/conf.curl
 ADD ./config/nginx.conf /etc/nginx/nginx.conf
+ADD ./config/wordlists /usr/share/wordlists
 ENTRYPOINT ["/usr/bin/zsh"]
 
