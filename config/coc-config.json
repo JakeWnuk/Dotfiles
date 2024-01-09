@@ -1,0 +1,27 @@
+{
+  "suggest.noselect": false,
+  "diagnostic.errorSign": "x",
+  "diagnostic.warningSign": "!",
+  "diagnostic.infoSign": "?",
+  "diagnostic.checkCurrentLine": true,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"]
+    }
+  },
+  "go.goplsOptions": {
+    "staticcheck": true
+  },
+  "coc.preferences.formatOnSave": {
+    "c": true,
+    "cpp": true,
+    "go": true,
+    "json": true,
+    "css": true,
+    "html": true,
+    "python": true,
+    "yaml": true
+  }
+}

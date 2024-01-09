@@ -61,3 +61,8 @@
       copy:
         src: './config/wordlists'
         dest: '/usr/share/wordlists'
+    - name: Copy coc configuration to ~/.vim/
+      become: yes
+      copy:
+        src: './config/coc-config.json'
+        dest: '~/.vim/'
