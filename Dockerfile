@@ -22,7 +22,7 @@ RUN bash /tmp/installers/install-updates.sh && \
 WORKDIR /data
 ADD ./config/conf.curl /usr/share/grc/conf.curl
 ADD ./config/nginx.conf /etc/nginx/nginx.conf
-ADD ./config/coc-config.json ~/.vim/
+ADD ./config/coc-config.json /root/.vim/coc-config.json
 ADD ./config/wordlists /usr/share/wordlists
 ENTRYPOINT ["/usr/bin/zsh"]
 
