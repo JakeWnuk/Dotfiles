@@ -95,7 +95,7 @@ __prompt_command() {
         atC="${txtgrn}"
         borderC="${txtgrn}"
     fi
-    PS1+="${nameC}\u${atC}@${hostC}\h${atC}:${borderC}[${pathC}\w${borderC}]${pointerC}\n$ ${normalC}"
+    PS1+="${nameC}\u${atC}@${hostC}[\D{%F %T %Z}]${atC}:${borderC}[${pathC}\w${borderC}]${pointerC}\n$ ${normalC}"
 }
 
 # Local settings go last

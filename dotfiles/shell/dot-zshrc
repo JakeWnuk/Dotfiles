@@ -98,4 +98,5 @@ pointerC="%F{7}"    # Silver
 
 # Prompt
 NEWLINE=$'\n'
-PROMPT="%f${nameC}%n%(?.${pointerC}.%F{9})@%f${hostC}%m%f%(?.${pointerC}.%F{9}):%f%(?.${pointerC}.%F{9})[%f${pathC}%~%f%(?.${pointerC}.%F{9})]%f%(?.${pointerC}.%F{9})${NEWLINE}$ %f"
+PROMPT="%f${nameC}%n%(?.${pointerC}.%F{9})@%f${hostC}[%D %*]%f%(?.${pointerC}.%F{9}):%f%(?.${pointerC}.%F{9})[%f${pathC}%~%f%(?.${pointerC}.%F{9})]%f%(?.${pointerC}.%F{9})${NEWLINE}$ %f"
+
