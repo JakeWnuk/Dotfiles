@@ -75,6 +75,16 @@ tolower(){
     fi
 }
 
+# searches through NSEs quickly
+nsearch() {
+    if [[ $# -ne 1 ]]; then
+	    echo -e EXAMPLE: nsearch KEYWORD or nsearch NSE \\n
+    else
+        ls -l /usr/share/nmap/scripts/* | grep -i $1 | awk -F 'scripts/' '{ print $2 }'
+        nmap --script-help=$1 2>/dev/null | grep -v 'Starting Nmap'
+    fi
+}
+
 # *****
 # Docker
 # *****
