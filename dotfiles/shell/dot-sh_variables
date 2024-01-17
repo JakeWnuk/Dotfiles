@@ -2,6 +2,7 @@
 # Locals
 # *****
 
+HISTFILE=~/.sh_history
 HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=50000000
 HISTFILESIZE=50000000
