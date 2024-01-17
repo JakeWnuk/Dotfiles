@@ -1,8 +1,24 @@
 # *****
+# Simple
+# *****
+alias ls='ls --color=auto -lashx'
+alias ll='ls --color=auto -lash'
+alias la='ls --color=auto -A'
+alias l='ls --color=auto -CF'
+alias ks='ls -lashtx'
+alias ld='ls -lashtx'
+alias :q="exit"
+alias :qa="exit"
+alias :wq="exit"
+alias _='sudo'
+alias ipa='ip -br a'
+alias curl='grc curl'
+
+# *****
 # Utility
 # *****
 
-# replace dir with better printing
+# replace dir with nice printing
 dir() {
     if [[ $# -ne 1 ]]; then
         tree -Cfsh --noreport --dirsfirst
@@ -30,7 +46,7 @@ onlynew() {
     fi 
 }
 
-# unqiue sort file
+# unique sort file
 usort() {
     if [[ $# -ne 1 ]]; then
         LC_ALL=C sort -u -T ./
@@ -150,7 +166,6 @@ dk-vpn(){
         docker run --cap-add=NET_ADMIN --device /dev/net/tun --sysctl net.ipv6.conf.all.disable_ipv6=0 -it --rm --volume ${PWD}:/data "$@"
     fi
 }
-
 
 # opens up a docker container for an image
 dk-here(){

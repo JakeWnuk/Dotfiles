@@ -8,9 +8,6 @@ source ~/.fzf/shell/completion.zsh
 # mute terminal
 unsetopt BEEP
 
-# fix missing newline characters
-PROMPT_EOL_MARK=''
-
 # Suggestions
 zstyle ':autocomplete:tab:*' insert-unambiguous yes
 zstyle ':completion:*' menu select
@@ -37,11 +34,6 @@ bindkey "$key[Down]" down-line-or-beginning-search
 bindkey "^?" backward-delete-char
 
 # History control
-HISTFILE=~/.zsh_history
-HISTCONTROL=ignoredups:ignorespace
-HISTSIZE=50000000
-HISTFILESIZE=50000000
-SAVEHIST=50000000
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
@@ -52,51 +44,16 @@ if [ -f ~/.sh_aliases ]; then
     . ~/.sh_aliases
 fi
 
+# variables file
+if [ -f ~/.sh_variables ]; then
+    . ~/.sh_variables
+fi
+
 # grc file              
 if [ -f ~/.grc_aliases ]; then
     . ~/.grc_aliases
 fi
 
-# Alias definitions
-alias ls='ls --color=auto -lashx'
-alias ll='ls --color=auto -lash'
-alias la='ls --color=auto -A'
-alias l='ls --color=auto -CF' 
-alias ks='ls -lashtx'
-alias ld='ls -lashtx'
-alias :q="exit"
-alias :qa="exit"
-alias :wq="exit"
-alias _='sudo'
-alias ipa='ip -br a'
-alias curl='grc curl'
-
-# Color
-export TERM="xterm-256color"
-
-# Vim
-export EDITOR=/usr/bin/vim
-
-# PATH
-export PATH=~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH$
-
-# Go
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
-# Ports
-export PORTS_HTTP_XL='80,81,300,443,591,593,832,981,1010,1311,2082,2087,2095,2096,2480,3000,3128,3333,4243,4567,4711,4712,4993,5000,5104,5108,5800,6543,7000,7396,7474,8000,8001,8008,8014,8042,8069,8080,8081,8088,8090,8091,8118,8123,8172,8222,8243,8280,8281,8333,8443,8500,8834,8880,8888,8983,9000,9043,9060,9080,9090,9091,9200,9443,9800,9981,12443,16080,18091,18092,20720,28017'
-export PORTS_HTTP='80,443,8080,8443'
-
-# Prompt colours
-nameC="%F{51}"      # Bright Cyan
-hostC="%F{51}"      # Bright Cyan
-pathC="%F{51}"      # Bright Cyan
-gitC="%F{51}"       # Bright Cyan
-pointerC="%F{7}"    # Silver
-
 # Prompt
-NEWLINE=$'\n'
-PROMPT="%f${nameC}%n%(?.${pointerC}.%F{9})@%f${hostC}[%D %*]%f%(?.${pointerC}.%F{9}):%f%(?.${pointerC}.%F{9})[%f${pathC}%~%f%(?.${pointerC}.%F{9})]%f%(?.${pointerC}.%F{9})${NEWLINE}$ %f"
+PROMPT="%f${zshnameC}%n%(?.${zshpointerC}.%F{9})@%f${zshhostC}[%D %*]%f%(?.${zshpointerC}.%F{9}):%f%(?.${zshpointerC}.%F{9})[%f${zshpathC}%~%f%(?.${zshpointerC}.%F{9})]%f%(?.${zshpointerC}.%F{9})${zshNEWLINE}$ %f"
 

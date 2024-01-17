@@ -1,7 +1,4 @@
 # History control
-HISTCONTROL=ignoredups:ignorespace
-HISTSIZE=100000
-HISTFILESIZE=2000000
 shopt -s histappend
 shopt -s cdspell
 bind TAB:menu-complete
@@ -18,63 +15,18 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# Alias definitions
-alias ls='ls --color=auto -lashx'
-alias ll='ls --color=auto -lash'
-alias la='ls --color=auto -A'
-alias l='ls --color=auto -CF' 
-alias ks='ls -lashtx'
-alias ld='ls -lashtx'
-alias :q="exit"
-alias :qa="exit"
-alias :wq="exit"
-alias _='sudo'
-alias ipa='ip -br a'
-alias curl='grc curl'
-
 # functions file
 if [ -f ~/.sh_aliases ]; then
     . ~/.sh_aliases
 fi
 
-# Color
-export TERM="xterm-256color"
-
-# Vim
-export EDITOR=/usr/bin/vim
+# variables file
+if [ -f ~/.sh_variables ]; then
+   . ~/.sh_variables
+fi
 
 # PATH
 export PATH=~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH$
-
-# Go
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
-# Ports
-export PORTS_HTTP_XL='80,81,300,443,591,593,832,981,1010,1311,2082,2087,2095,2096,2480,3000,3128,3333,4243,4567,4711,4712,4993,5000,5104,5108,5800,6543,7000,7396,7474,8000,8001,8008,8014,8042,8069,8080,8081,8088,8090,8091,8118,8123,8172,8222,8243,8280,8281,8333,8443,8500,8834,8880,8888,8983,9000,9043,9060,9080,9090,9091,9200,9443,9800,9981,12443,16080,18091,18092,20720,28017'
-export PORTS_HTTP='80,443,8080,8443'
-
-# Colours
-txtblk='\[\e[0;30m\]' # Black - Regular
-txtred='\[\e[0;31m\]' # Red
-txtgrn='\[\e[0;32m\]' # Green
-txtylw='\[\e[0;33m\]' # Yellow
-txtblu='\[\e[0;34m\]' # Blue
-txtpur='\[\e[0;35m\]' # Purple
-txtcyn='\[\e[0;36m\]' # Cyan
-txtwht='\[\e[0;37m\]' # White
-txtrst='\[\e[0m\]'    # Text Reset
-
-# Prompt colours
-atC="${txtgrn}"                                                                                                                   
-nameC="${txtcyn}"  # Bright Cyan                                                                                                                 
-hostC="${txtcyn}"  # Bright Cyan                                                                                                                 
-pathC="${txtcyn}"  # Bright Cyan
-gitC="${txtcyn}"  # Bright Cyan
-pointerC="${txtwht}"  # Silver
-normalC="${txtrst}"
-borderC="${txtgrn}"
 
 # Prompt
 PROMPT_COMMAND=__prompt_command
@@ -83,22 +35,17 @@ __prompt_command() {
     PS1=''
 
     if [ $EXIT -eq 127 ]; then
-        pointerC="${txtpur}"
-        atC="${txtpur}"
-        borderC="${txtpur}"
+        pointerC="${bshtxtpur}"
+        atC="${bshtxtpur}"
+        borderC="${bshtxtpur}"
     elif [ $EXIT -eq 1 ]; then
-        pointerC="${txtred}"
-        atC="${txtred}"
-        borderC="${txtred}"
+        pointerC="${bshtxtred}"
+        atC="${bshtxtred}"
+        borderC="${bshtxtred}"
     else 
-        pointerC="${txtgrn}"
-        atC="${txtgrn}"
-        borderC="${txtgrn}"
+        pointerC="${bshtxtgrn}"
+        atC="${bshtxtgrn}"
+        borderC="${bshtxtgrn}"
     fi
     PS1+="${nameC}\u${atC}@${hostC}[\D{%F %T %Z}]${atC}:${borderC}[${pathC}\w${borderC}]${pointerC}\n$ ${normalC}"
 }
-
-# Local settings go last
-if [ -f ~/.localrc ]; then 
-  source ~/.localrc
-fi
