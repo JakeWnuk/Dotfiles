@@ -1,0 +1,30 @@
+# Scan
+templates:
+
+exclude:
+    - bruteforce/
+    - login/
+    - default-login/
+
+severity:
+    - critical
+    - high
+    - medium
+    - low
+    - info
+
+headers:
+    - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+
+# Speed
+rate-limit: 500
+bulk-size: 50
+c: 30
+
+# Misc
+no-meta: false
+include-rr: true
+silent: true
+update-templates: true
+retries: 2 
+timeout: 10

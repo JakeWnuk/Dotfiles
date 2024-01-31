@@ -61,6 +61,11 @@
       copy:
         src: './config/wordlists'
         dest: '/usr/share/wordlists'
+    - name: Copy nuclei configuration files to /usr/share/nuclei-configs/
+      become: yes
+      copy:
+        src: './config/nuclei-templates'
+        dest: '/usr/share/nuclei-templates'
     - name: Copy coc configuration to ~/.vim/
       become: yes
       copy:
