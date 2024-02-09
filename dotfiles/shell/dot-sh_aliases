@@ -94,10 +94,19 @@ tolower(){
 # searches through NSEs quickly
 nsearch() {
     if [[ $# -ne 1 ]]; then
-	    echo -e EXAMPLE: nsearch KEYWORD or nsearch NSE \\n
+	    echo 'EXAMPLE: nsearch KEYWORD or nsearch NSE'
     else
         ls -l /usr/share/nmap/scripts/* | grep -i $1 | awk -F 'scripts/' '{ print $2 }'
         nmap --script-help=$1 2>/dev/null | grep -v 'Starting Nmap'
+    fi
+}
+
+# converts CIDR notation to IP notation 
+cidr2ip(){
+    if [[ $# -lt 1 ]]; then
+        echo 'EXAMPLE: cidr2ip CIDR'
+    else
+        /usr/bin/nmap -sL $1 | awk '/Nmap scan report/{print $NF}' | sed -s 's/(//g;s/)//g'
     fi
 }
 
