@@ -27,16 +27,6 @@ dir() {
     fi
 }
 
-# only print new lines not in file
-onlynew() {
-    if [[ $# -ne 1 ]]; then
-        echo 'only print new items not in file'
-        echo 'EXAMPLE: stdin | onlynew <FILE>'
-    else
-        awk 'FNR==NR {a[$0]++; next} !($0 in a)' $1 -
-    fi 
-}
-
 # unique sort file
 usort() {
     if [[ $# -ne 1 ]]; then
@@ -123,12 +113,6 @@ dk-webdev(){
     docker run -p 1313:1313 --volume ${PWD}:/src -it --rm jwnuk/webdev "$@"
 }
 
-# opens metasploit container and mounts ports
-dk-msf(){
-    mkdir -p ~/.msf4
-    docker run --rm -it -v "${HOME}/.msf4:/home/msf/.msf4" --volume ${PWD}:/data -p 8443-8500:8443-8500 metasploitframework/metasploit-framework ./msfconsole -q
-}
-
 # **** Docker Utility ****
 
 # opens up a docker container connected to the host network with X11 support
@@ -143,27 +127,15 @@ dk-x11(){
     fi
 }
 
-# opens up a docker container for an image on the host network
-dk-host(){
+# opens up a docker container with caps for openvpn and msf port support
+dk-x(){
     if [[ $# -lt 1 ]]; then
-        tput setaf 2;echo 'EXAMPLE: dk-host IMAGE+ARGS'
+        tput setaf 2;echo 'EXAMPLE: dk-x IMAGE+ARGS'
         echo ''
         docker image ls
         echo ''
     else
-        docker run --net=host -it --rm --volume ${PWD}:/data "$@"
-    fi
-}
-
-# opens up a docker container with caps for openvpn
-dk-vpn(){
-    if [[ $# -lt 1 ]]; then
-        tput setaf 2;echo 'EXAMPLE: dk-host IMAGE+ARGS'
-        echo ''
-        docker image ls
-        echo ''
-    else
-        docker run --cap-add=NET_ADMIN --device /dev/net/tun --sysctl net.ipv6.conf.all.disable_ipv6=0 -it --rm --volume ${PWD}:/data "$@"
+        docker run --cap-add=NET_ADMIN --device /dev/net/tun --sysctl net.ipv6.conf.all.disable_ipv6=0 -p 8443-8500:8443-8500 -it --rm --volume ${PWD}:/data "$@"
     fi
 }
 
@@ -179,3 +151,14 @@ dk-here(){
     fi
 }
 
+# opens up a docker container for an image on the host network
+dk-host(){
+    if [[ $# -lt 1 ]]; then
+        tput setaf 2;echo 'EXAMPLE: dk-host IMAGE+ARGS'
+        echo ''
+        docker image ls
+        echo ''
+    else
+        docker run --net=host -it --rm --volume ${PWD}:/data "$@"
+    fi
+}

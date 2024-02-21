@@ -16,6 +16,7 @@ RUN bash /tmp/installers/install-updates.sh && \
     bash /tmp/installers/install-vim.sh && \
     bash /tmp/installers/install-tools.sh && \
     bash /tmp/installers/install-wordlists.sh && \
+    bash /tmp/installers/install-msf.sh && \
     rm -rf /var/lib/apt/lists/* /tmp/*
 
 # Set environment
