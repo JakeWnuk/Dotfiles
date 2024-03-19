@@ -35,17 +35,17 @@ __prompt_command() {
     PS1=''
 
     if [ $EXIT -eq 127 ]; then
-        pointerC="${bshtxtpur}"
-        atC="${bshtxtpur}"
-        borderC="${bshtxtpur}"
+        pointerC="${bash_purple}"
+        atC="${bash_purple}"
+        borderC="${bash_purple}"
     elif [ $EXIT -eq 1 ]; then
-        pointerC="${bshtxtred}"
-        atC="${bshtxtred}"
-        borderC="${bshtxtred}"
+        pointerC="${bash_red}"
+        atC="${bash_red}"
+        borderC="${bash_red}"
     else 
-        pointerC="${bshtxtgrn}"
-        atC="${bshtxtgrn}"
-        borderC="${bshtxtgrn}"
+        pointerC="${bash_green}"
+        atC="${bash_green}"
+        borderC="${bash_green}"
     fi
-    PS1+="${nameC}\u${atC}@${hostC}[\D{%F %T %Z}]${atC}:${borderC}[${pathC}\w${borderC}]${pointerC}\n$ ${normalC}"
+    PS1+="${bash_name_color}\u${bash_at_color}@${bash_host_color}[\D{%F %T %Z}]${bash_at_color}:${bash_border_color}[${bash_path_color}\w${bash_border_color}]${bash_pointer_color}\n$ ${bash_text_color}"
 }
