@@ -2,7 +2,8 @@
 # This installer will configure the default shell and install Zsh plugins
 
 # Install Fzf from source
-# git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+# Does not work as intended so installing from APT but cloning completions
 # ~/.fzf/install --all
 
 # Install Zsh's Z Plugin
