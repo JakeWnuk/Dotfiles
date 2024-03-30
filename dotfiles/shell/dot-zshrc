@@ -1,0 +1,59 @@
+# Syntax highlighting, Z, and fzf
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-z.plugin.zsh
+autoload -U compinit && compinit
+source ~/.fzf/shell/key-bindings.zsh
+source ~/.fzf/shell/completion.zsh
+
+# mute terminal
+unsetopt BEEP
+
+# Suggestions
+zstyle ':autocomplete:tab:*' insert-unambiguous yes
+zstyle ':completion:*' menu select
+zstyle ':autocomplete:*' min-input 2
+# case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+# partial completion suggestions
+zstyle ':completion:*' list-suffixes
+zstyle ':completion:*' expand prefix suffix
+
+# Arrow binds
+bindkey '^[[1;5C' forward-word                    # ctrl + ->
+bindkey '^[[1;5D' backward-word                   # ctrl + <-
+bindkey '^[[1;3C' forward-word                    # alt + ->
+bindkey '^[[1;3D' backward-word                   # alt + <-
+
+# Fix searching
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "$key[Up]" up-line-or-beginning-search
+bindkey "$key[Down]" down-line-or-beginning-search
+bindkey "^?" backward-delete-char
+
+# History control
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_FIND_NO_DUPS
+
+# functions file
+if [ -f ~/.sh_aliases ]; then
+    . ~/.sh_aliases
+fi
+
+# variables file
+if [ -f ~/.sh_variables ]; then
+    . ~/.sh_variables
+fi
+
+# grc file              
+if [ -f ~/.grc_aliases ]; then
+    . ~/.grc_aliases
+fi
+
+# Prompt
+PROMPT="%f${zsh_name_color}%n%(?.${zsh_pointer_color}.%F{9})@%f${zsh_host_color}[%D %*]%f%(?.${zsh_pointer_color}.%F{9}):%f%(?.${zsh_pointer_color}.%F{9})[%f${zsh_path_color}%~%f%(?.${zsh_pointer_color}.%F{9})]%f%(?.${zsh_pointer_color}.%F{9})${zsh_new_line}$ %f"
+

@@ -1,0 +1,51 @@
+# History control
+shopt -s histappend
+shopt -s cdspell
+bind TAB:menu-complete
+
+# mute
+bind 'set bell-style none'
+
+# Bash completion
+if ! shopt -oq posix; then
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
+fi
+
+# functions file
+if [ -f ~/.sh_aliases ]; then
+    . ~/.sh_aliases
+fi
+
+# variables file
+if [ -f ~/.sh_variables ]; then
+   . ~/.sh_variables
+fi
+
+# PATH
+export PATH=~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH$
+
+# Prompt
+PROMPT_COMMAND=__prompt_command
+__prompt_command() {
+    local EXIT="$?"
+    PS1=''
+
+    if [ $EXIT -eq 127 ]; then
+        pointerC="${bash_purple}"
+        atC="${bash_purple}"
+        borderC="${bash_purple}"
+    elif [ $EXIT -eq 1 ]; then
+        pointerC="${bash_red}"
+        atC="${bash_red}"
+        borderC="${bash_red}"
+    else 
+        pointerC="${bash_green}"
+        atC="${bash_green}"
+        borderC="${bash_green}"
+    fi
+    PS1+="${bash_name_color}\u${bash_at_color}@${bash_host_color}[\D{%F %T %Z}]${bash_at_color}:${bash_border_color}[${bash_path_color}\w${bash_border_color}]${bash_pointer_color}\n$ ${bash_text_color}"
+}
