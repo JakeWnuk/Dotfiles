@@ -12,4 +12,6 @@ apt install -y nmap smbclient smbmap tcpdump
 /usr/local/go/bin/go install -v \
     github.com/projectdiscovery/httpx/cmd/httpx@latest
 
-# TODO - reimplement other tools
+/usr/local/go/bin/go install -v \
+    github.com/jakewnuk/ptt@latest
+
