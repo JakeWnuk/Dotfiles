@@ -3,3 +3,5 @@ awk '{if (length($0) >= 2) {print $0}}'
 awk -F ':' '{print $NF}'
 pip install --break-system-packages
 awk '{print ""}' left.lst > blank.lst
+find . -name '' -type f -exec x {} \;
+apt update && apt install -y
