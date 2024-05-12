@@ -9,6 +9,9 @@ apt install -y nmap smbclient smbmap tcpdump
     impacket
 
 ~/.local/bin/pipx install \
+    netexec
+
+~/.local/bin/pipx install \
     semgrep
 
 # Install Golang tools
