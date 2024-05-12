@@ -8,6 +8,9 @@ apt install -y nmap smbclient smbmap tcpdump
 ~/.local/bin/pipx install \
     impacket
 
+~/.local/bin/pipx install \
+    semgrep
+
 # Install Golang tools
 /usr/local/go/bin/go install -v \
     github.com/projectdiscovery/httpx/cmd/httpx@latest
