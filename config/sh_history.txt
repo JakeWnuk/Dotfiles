@@ -1,7 +1,7 @@
-awk '{print substr($1, 1, 1) $2}'
-awk '{if (length($0) >= 2) {print $0}}'
-awk -F ':' '{print $NF}'
+awk '{print substr($1, 1, 1) $2}' f
+awk '{if (length($0) >= 2) {print $0}}' f
+awk -F ':' '{print $NF}' f
 pip install --break-system-packages
-awk '{print ""}' left.lst > blank.lst
-find . -name '' -type f -exec x {} \;
+awk '{print ""}' f > blank.lst
+find . -name '*' -type f -exec x {} \;
 apt update && apt install -y
