@@ -47,5 +47,5 @@ __prompt_command() {
         atC="${bash_green}"
         borderC="${bash_green}"
     fi
-    PS1+="${bash_name_color}\u${bash_at_color}@${bash_host_color}[\D{%F %T %Z}]${bash_at_color}:${bash_border_color}[${bash_path_color}\w${bash_border_color}]${bash_pointer_color}\n$ ${bash_text_color}"
+    PS1+="\n${bash_name_color}\u${bash_at_color}@${bash_host_color}[\D{%F %T %Z}]${bash_at_color}:${bash_border_color}[${bash_path_color}\w${bash_border_color}]${bash_pointer_color}\n$ ${bash_text_color}"
 }

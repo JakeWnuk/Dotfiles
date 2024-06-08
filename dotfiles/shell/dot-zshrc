@@ -55,5 +55,5 @@ if [ -f ~/.grc_aliases ]; then
 fi
 
 # Prompt
-PROMPT="%f${zsh_name_color}%n%(?.${zsh_pointer_color}.%F{9})@%f${zsh_host_color}[%D %*]%f%(?.${zsh_pointer_color}.%F{9}):%f%(?.${zsh_pointer_color}.%F{9})[%f${zsh_path_color}%~%f%(?.${zsh_pointer_color}.%F{9})]%f%(?.${zsh_pointer_color}.%F{9})${zsh_new_line}$ %f"
+PROMPT="${zsh_new_line}%f${zsh_name_color}%n%(?.${zsh_pointer_color}.%F{9})@%f${zsh_host_color}[%D %*]%f%(?.${zsh_pointer_color}.%F{9}):%f%(?.${zsh_pointer_color}.%F{9})[%f${zsh_path_color}%~%f%(?.${zsh_pointer_color}.%F{9})]%f%(?.${zsh_pointer_color}.%F{9})${zsh_new_line}$ %f"
 
