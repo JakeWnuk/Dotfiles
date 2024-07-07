@@ -28,6 +28,5 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y \
     npm \
     clangd \
     ntp \
-    fzf
 apt-get update --fix-missing
 DEBIAN_FRONTEND=noninteractive apt-get install --fix-broken
