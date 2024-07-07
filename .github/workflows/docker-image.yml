@@ -30,5 +30,3 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/dotfiles:latest
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/dotfiles:latest
-          cache-to: type=inline
