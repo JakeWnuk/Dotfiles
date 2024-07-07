@@ -3,8 +3,7 @@
 
 # Install Fzf from source
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-# Does not work as intended so installing from APT but cloning completions
-# ~/.fzf/install --all
+~/.fzf/install --all --no-fish
 
 # Install Zsh's Z Plugin
 URL=https://raw.githubusercontent.com/agkozak/zsh-z/master/zsh-z.plugin.zsh
