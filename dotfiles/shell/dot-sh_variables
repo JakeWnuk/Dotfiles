@@ -2,6 +2,7 @@
 # Locals
 # *****
 
+fzf=$HOME/.fzf/bin/fzf
 PROMPT_EOL_MARK=''
 HISTFILE=~/.sh_history
 HISTCONTROL=ignoredups:ignorespace

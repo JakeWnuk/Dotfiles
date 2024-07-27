@@ -110,3 +110,6 @@ let g:airline_theme='tender'
 " jump between buffers with shift-tab
 nnoremap <silent> <S-Tab> :bprevious<CR>
 
+" do not jump on save with :W
+command! W noa w
+
