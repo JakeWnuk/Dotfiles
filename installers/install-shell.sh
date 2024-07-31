@@ -12,6 +12,9 @@ mkdir ~/.zsh/ && wget -O ~/.zsh/zsh-z.plugin.zsh $URL
 # Source and set shell
 source ~/.bashrc; source ~/.zshrc
 
+# Set locale
+locale-gen en_US.UTF-8 && update-locale
+
 # Configure for sudo and non-sudo systems
 if command -v sudo > /dev/null; then
     echo "/usr/bin/zsh" | sudo tee -a /etc/shells
