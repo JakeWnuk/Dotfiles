@@ -2,7 +2,6 @@
 # Locals
 # *****
 
-fzf=$HOME/.fzf/bin/fzf
 PROMPT_EOL_MARK=''
 HISTFILE=~/.sh_history
 HISTCONTROL=ignoredups:ignorespace
@@ -16,14 +15,14 @@ PORTS_MSF="0,1,19,21,22,23,25,42,49,53,69,70,79,80,81,85,88,105,109,110,111,113,
 # Globals
 # *****
 
-export PATH=~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH$
+export PATH=~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/root/.fzf/bin:$PATH
 export TERM="xterm-256color"
 export EDITOR=/usr/bin/vim
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-export LC_ALL=en_IN.UTF-8
-export LANG=en_IN.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # ***
 # Colors
