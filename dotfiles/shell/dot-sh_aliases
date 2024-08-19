@@ -1,0 +1,146 @@
+# *****
+# Simple
+# *****
+alias ls='ls --color=auto -lashx'
+alias ll='ls --color=auto -lash'
+alias la='ls --color=auto -A'
+alias l='ls --color=auto -CF'
+alias ks='ls -lashtx'
+alias ld='ls -lashtx'
+alias :q="exit"
+alias :qa="exit"
+alias :wq="exit"
+alias _='sudo'
+
+# *****
+# Utility
+# *****
+
+# unique sort file
+usort() {
+    if [[ $# -ne 1 ]]; then
+        LC_ALL=C sort -u -T ./
+    else
+        LC_ALL=C sort -u $1 -T ./ -o $1
+    fi
+}
+
+# tmux wrapper
+tmuxx() {
+    if [[ $# -ne 1 ]]; then
+        tmux attach
+    else
+        tmux new -s $1
+    fi
+}
+
+# removes color from stdin or inplace with a file                                                                                                                                                                                                                   
+nocolor(){
+    if [[ $# -ne 1 ]]; then
+        sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'
+    else
+        sed -i 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g' $1
+    fi
+}
+
+# removes case from stdin or file and prints to stdout
+tolower(){
+    if [[ $# -ne 1 ]]; then
+        awk '{print tolower($0)}'
+    else
+        awk '{print tolower($0)}' $1
+    fi
+}
+
+# searches through NSEs quickly
+nsearch() {
+    if [[ $# -ne 1 ]]; then
+	    echo 'EXAMPLE: nsearch KEYWORD or nsearch NSE'
+    else
+        ls -l /usr/share/nmap/scripts/* | grep -i $1 | awk -F 'scripts/' '{ print $2 }'
+        nmap --script-help=$1 2>/dev/null | grep -v 'Starting Nmap'
+    fi
+}
+
+# converts CIDR notation to IP notation 
+cidr2ip(){
+    if [[ $# -lt 1 ]]; then
+        echo 'EXAMPLE: cidr2ip CIDR'
+    else
+        /usr/bin/nmap -sL $1 | awk '/Nmap scan report/{print $NF}' | sed -s 's/(//g;s/)//g'
+    fi
+}
+
+# *****
+# Docker
+# *****
+
+
+# **** Docker Tools ****
+
+# opens hugo container
+dk-webdev(){
+    docker run -p 1313:1313 --volume ${PWD}:/src -it --rm jwnuk/webdev "$@"
+}
+
+# **** Docker Utility ****
+
+# Opens a Docker container at the directory
+dk-here(){
+    if [[ $# -lt 1 ]]; then
+        tput setaf 2;echo 'EXAMPLE: dk-here [IMAGE/ARGS]'
+        echo ''
+        docker image ls
+        echo ''
+    else
+        docker run -it --rm --volume ${PWD}:/data "$@"
+    fi
+}
+
+# Opens a Docker container attached to the host network
+dk-host(){
+    if [[ $# -lt 1 ]]; then
+        tput setaf 2;echo 'EXAMPLE: dk-host [IMAGE/ARGS]'
+        echo ''
+        docker image ls
+        echo ''
+    else
+        docker run --net=host -it --rm --volume ${PWD}:/data "$@"
+    fi
+}
+
+# Opens a Docker container with network caps
+dk-networkcaps(){
+    if [[ $# -lt 1 ]]; then
+        tput setaf 2;echo 'EXAMPLE: dk-networkcaps [IMAGE/ARGS]'
+        echo ''
+        docker image ls
+        echo ''
+    else
+        docker run --cap-add=NET_ADMIN --device /dev/net/tun --sysctl net.ipv6.conf.all.disable_ipv6=0 -p 8443-8500:8443-8500 -it --rm --volume ${PWD}:/data "$@"
+    fi
+}
+
+# Opens a Docker container with GPU passthrough
+dk-gpu(){
+    if [[ $# -lt 1 ]]; then
+        tput setaf 2;echo 'EXAMPLE: dk-gpu [IMAGE/ARGS]'
+        echo ''
+        docker image ls
+        echo ''
+    else
+        docker run --network=host --rm -it --gpus all -v $PWD:/data "$@"
+    fi
+}
+
+# Opens a Docker container with X11 support
+dk-x11(){
+    if [[ $# -lt 2 ]]; then
+        tput setaf 2;echo 'EXAMPLE: dk-x11 [IP-FOR-X11] [IMAGE/ARGS]'
+        echo ''
+        docker image ls
+        echo ''
+    else
+        docker run -it --rm --net=host --env="QT_X11_NO_MITSHM=1" --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$1:0  --volume ${PWD}:/data "${@:2}"
+    fi
+}

@@ -1,0 +1,21 @@
+---
+- name: Check if programs are installed
+  vars:
+    programs:
+      - nmap
+      - smbclient
+      - smbmap
+      - tcpdump
+
+  tasks:
+  - name: Check if program exists
+    command: which {{ item }}
+    register: result
+    ignore_errors: true
+  - name: Assert program is installed
+    assert:
+      that: result.rc == 0
+      fail_msg: "{{ item }} is not installed"
+      success_msg: "{{ item }} is installed"
+    loop: "{{ programs }}"
+

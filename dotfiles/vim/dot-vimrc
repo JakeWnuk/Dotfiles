@@ -1,0 +1,115 @@
+" Don't try to be vi compatible
+set nocompatible
+
+" Helps force plugins to load correctly when it is turned back on below
+filetype off
+
+" Load plugins
+call plug#begin()
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'jacoborus/tender.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Initialize plugin system
+call plug#end()
+
+" Turn on syntax highlighting
+syntax on
+
+" For plugins to load correctly
+filetype plugin indent on
+
+" Security
+set modelines=0
+
+" Show line numbers
+set relativenumber
+
+" Show file stats
+set ruler
+
+" Remove blinking and flashing on error
+set noerrorbells
+set visualbell
+set t_vb=
+
+" Encoding
+set encoding=utf-8
+
+" Whitespace and Indentation
+set wrap
+set textwidth=79
+set formatoptions=tcqrn1
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set shiftround
+
+" Cursor motion
+set scrolloff=3
+set backspace=indent,eol,start
+set matchpairs+=<:> " use % to jump between pairs
+runtime! macros/matchit.vim
+
+" Move up/down editor lines
+nnoremap j gj
+nnoremap k gk
+
+" Allow hidden buffers
+set hidden
+
+" Rendering
+set ttyfast
+
+" Status bar
+set laststatus=2
+
+" Last line
+set showmode
+set showcmd
+
+" Searching
+nnoremap / /\v
+vnoremap / /\v
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+set gdefault
+
+" Line wrapping
+set nowrap
+set linebreak
+set mouse=a
+
+" Auto indent what you can
+set autoindent
+
+" Visual prompt for command completion
+set wildmenu
+
+" Code Folding
+set foldmethod=syntax
+set nofoldenable
+
+" Color scheme (terminal)
+set t_Co=256
+colorscheme tender
+hi Normal ctermbg=none
+hi NonText ctermbg=none
+
+" Airline configuration
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#tabline#enabled = 2
+let g:airline_theme='tender'
+
+" jump between buffers with shift-tab
+nnoremap <silent> <S-Tab> :bprevious<CR>
+
+" do not jump on save with :W
+command! W noa w
+

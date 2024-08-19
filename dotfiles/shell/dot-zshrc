@@ -1,0 +1,54 @@
+# Syntax highlighting and Z
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-z.plugin.zsh
+autoload -U compinit && compinit
+
+# Mute terminal
+unsetopt BEEP
+
+# Suggestions
+zstyle ':autocomplete:tab:*' insert-unambiguous yes
+zstyle ':completion:*' menu select
+zstyle ':autocomplete:*' min-input 2
+# Case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+# Partial completion suggestions
+zstyle ':completion:*' list-suffixes
+zstyle ':completion:*' expand prefix suffix
+
+# Arrow binds
+bindkey '^[[1;5C' forward-word    # ctrl + ->
+bindkey '^[[1;5D' backward-word   # ctrl + <-
+bindkey '^[[1;3C' forward-word    # alt + ->
+bindkey '^[[1;3D' backward-word   # alt + <-
+
+# Fix searching
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "$key[Up]" up-line-or-beginning-search
+bindkey "$key[Down]" down-line-or-beginning-search
+bindkey "^?" backward-delete-char
+
+# History control
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_FIND_NO_DUPS
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
+
+# Functions file
+if [ -f ~/.sh_aliases ]; then
+    . ~/.sh_aliases
+fi
+
+# Variables file
+if [ -f ~/.sh_variables ]; then
+    . ~/.sh_variables
+fi
+
+# Prompt
+PROMPT="${zsh_new_line}%f${zsh_name_color}%n%(?.${zsh_pointer_color}.%F{9})@%f${zsh_host_color}[%D %*]%f%(?.${zsh_pointer_color}.%F{9}):%f%(?.${zsh_pointer_color}.%F{9})[%f${zsh_path_color}%~%f%(?.${zsh_pointer_color}.%F{9})]%f%(?.${zsh_pointer_color}.%F{9})${zsh_new_line}$ %f"
+

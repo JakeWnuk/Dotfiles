@@ -1,0 +1,26 @@
+# Set silent mode
+silent
+
+# Dump headers to stdout
+#--dump-header -
+
+# Set user agent
+-A "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.2.149.27 Safari/525.13"
+
+# When needed for TLS (same as -k)
+#insecure
+
+# Send to proxy
+#proxy = 127.0.0.1:8080
+
+# Headers
+#-H  "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+#-H  "Upgrade-Insecure-Requests: 1"
+#-H  "Accept-Encoding: gzip, deflate, sdch"
+#-H  "Accept-Language: en-US,en;q=0.8"
+
+# Verbose
+#--verbose
+
+# Follow redirects
+#--location
