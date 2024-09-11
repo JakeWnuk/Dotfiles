@@ -6,7 +6,6 @@
       - /tmp/installers/install-dotfiles.sh
       - /tmp/installers/install-shell.sh
       - /tmp/installers/install-go.sh
-      - /tmp/installers/install-pip.sh
       - /tmp/installers/install-vim.sh
       - /tmp/installers/install-tools.sh
       - /tmp/installers/install-wordlists.sh
