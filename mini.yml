@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Configure Installers
+      import_tasks: ansible/mini/configure-installers.yml
+
+    - name: Run Installers
+      import_tasks: ansible/mini/run-installers.yml
+
+    - name: Configure Environment
+      import_tasks: ansible/mini/configure-environment.yml
+    

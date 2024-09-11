@@ -2,11 +2,11 @@
 - hosts: localhost
   tasks:
     - name: Configure Installers
-      import_tasks: ansible/configure-installers.yml
+      import_tasks: ansible/main/configure-installers.yml
 
     - name: Run Installers
-      import_tasks: ansible/run-installers.yml
+      import_tasks: ansible/main/run-installers.yml
 
     - name: Configure Environment
-      import_tasks: ansible/configure-environment.yml
+      import_tasks: ansible/main/configure-environment.yml
     

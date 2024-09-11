@@ -1,0 +1,19 @@
+---
+- name: Copy nginx.conf to /etc/nginx/
+  become: yes
+  copy:
+    src: './config/nginx.conf'
+    dest: '/etc/nginx/nginx.conf'
+
+- name: Copy wordlists to /usr/share/wordlists/
+  become: yes
+  copy:
+    src: './config/wordlists'
+    dest: '/usr/share/wordlists'
+
+- name: Copy coc configuration to ~/.vim/
+  become: yes
+  copy:
+    src: './config/coc-config.json'
+    dest: '~/.vim/coc-config.json'
+
