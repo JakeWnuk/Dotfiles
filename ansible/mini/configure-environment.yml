@@ -1,7 +1,0 @@
----
-- name: Copy coc configuration to ~/.vim/
-  become: yes
-  copy:
-    src: './config/coc-config.json'
-    dest: '~/.vim/coc-config.json'
-
