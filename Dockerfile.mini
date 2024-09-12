@@ -13,7 +13,7 @@ RUN bash /tmp/installers/install-updates.sh && \
     bash /tmp/installers/install-pip.sh 
 
 # Copy Ansible script to Docker image
-COPY main.yml /root/main.yml
+COPY mini.yml /root/main.yml
 
 # Run Ansible script
 ENV DEBIAN_FRONTEND noninteractive
