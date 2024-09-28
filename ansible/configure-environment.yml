@@ -1,9 +1,21 @@
 ---
+- name: Create nginx directory
+  file:
+    path: /etc/nginx/
+    state: directory
+    mode: '0755'
+
 - name: Copy nginx.conf to /etc/nginx/
   become: yes
   copy:
     src: './config/nginx.conf'
     dest: '/etc/nginx/nginx.conf'
+
+- name: Ensure wordlists directory exists
+  file:
+    path: /usr/share/wordlists/
+    state: directory
+    mode: '0755'
 
 - name: Copy wordlists to /usr/share/wordlists/
   become: yes

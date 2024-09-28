@@ -16,7 +16,7 @@ RUN bash /root/installers/install-updates.sh && \
 COPY main.yml /root/main.yml
 
 # Run Ansible script
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 RUN /root/.local/bin/ansible-playbook -vvv /tmp/main.yml
 
 # Set environment
