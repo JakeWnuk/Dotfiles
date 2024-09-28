@@ -10,7 +10,7 @@
   register: result
   with_items:
     - { src: './config/', dest: '/tmp/config/' }
-    - { src: './installers/', dest: '/tmp/installers/' }
+    - { src: './installers/', dest: '/root/installers/' }
     - { src: './dotfiles', dest: '{{ ansible_env.HOME }}/' }
 
 - name: Copy configuration files and installers
@@ -25,5 +25,5 @@
   command:
     cmd: "bash {{ item }}"
   with_items:
-    - /tmp/installers/install-updates.sh
+    - /root/installers/install-updates.sh
 

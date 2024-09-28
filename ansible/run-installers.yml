@@ -3,13 +3,13 @@
   command:
     cmd: "bash {{ item }}"
   with_items:
-      - /tmp/installers/install-dotfiles.sh
-      - /tmp/installers/install-shell.sh
-      - /tmp/installers/install-go.sh
-      - /tmp/installers/install-vim.sh
-    # - /tmp/installers/install-tools.sh
-    # - /tmp/installers/install-wordlists.sh
-    # - /tmp/installers/install-msf.sh
+      - /root/installers/install-dotfiles.sh
+      - /root/installers/install-shell.sh
+      - /root/installers/install-go.sh
+      - /root/installers/install-vim.sh
+    # - /root/installers/install-tools.sh
+    # - /root/installers/install-wordlists.sh
+    # - /root/installers/install-msf.sh
 
 - name: Clean up APT and tmp
   become: yes

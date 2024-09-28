@@ -3,14 +3,14 @@ FROM ubuntu:mantic
 
 # Load configuration files and installers
 ADD ./config/ /tmp/config/
-ADD ./installers/ /tmp/installers/
+ADD ./installers/ /root/installers/
 ADD ./dotfiles /root/dotfiles/
 ADD ./ansible/ /tmp/ansible/
 ADD ./main.yml /tmp/main.yml
 
 # Install Pip to install Ansible
-RUN bash /tmp/installers/install-updates.sh && \
-    bash /tmp/installers/install-pip.sh 
+RUN bash /root/installers/install-updates.sh && \
+    bash /root/installers/install-pip.sh 
 
 # Copy Ansible script to Docker image
 COPY main.yml /root/main.yml

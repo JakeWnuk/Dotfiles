@@ -3,8 +3,12 @@
 
 # Install Apt tools
 apt install -y \ 
+    docker.io \
     nmap \
-    smbclient 
+    smbclient \
+    openvpn \
+    rlwrap \
+    nginx 
 
 # Install Golang tools
 /usr/local/go/bin/go install -v \
