@@ -7,9 +7,8 @@
       - /root/installers/install-shell.sh
       - /root/installers/install-go.sh
       - /root/installers/install-vim.sh
-    # - /root/installers/install-tools.sh
-    # - /root/installers/install-wordlists.sh
-    # - /root/installers/install-msf.sh
+
+      # Add other default installs here if wanted
 
 - name: Clean up APT and tmp
   become: yes
