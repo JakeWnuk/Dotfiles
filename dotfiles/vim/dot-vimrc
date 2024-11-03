@@ -84,7 +84,7 @@ set gdefault
 " Line wrapping
 set nowrap
 set linebreak
-set mouse=a
+set mouse=
 
 " Auto indent what you can
 set autoindent
