@@ -2,7 +2,7 @@
 # This installer will install Golang from source
 
 # Fetch the source from go.dev
-URL=https://go.dev/dl/go1.23.0.linux-amd64.tar.gz
+URL=https://go.dev/dl/go1.23.2.linux-amd64.tar.gz
 wget -O /tmp/go.linux-amd64.tar.gz $URL
 
 # Install for sudo or non-sudo systems
