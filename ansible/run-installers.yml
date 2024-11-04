@@ -5,7 +5,7 @@
   with_items:
       - /root/installers/install-dotfiles.sh
       - /root/installers/install-shell.sh
-        #      - /root/installers/install-go.sh
+      - /root/installers/install-go.sh
       - /root/installers/install-vim.sh
 
       # Add other default installs here if wanted
