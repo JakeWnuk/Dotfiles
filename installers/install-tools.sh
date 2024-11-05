@@ -3,7 +3,7 @@
 
 # Install Apt tools
 apt install -y \ 
-    docker.io \
+   # docker.io \
     nmap \
     smbclient \
     openvpn \
