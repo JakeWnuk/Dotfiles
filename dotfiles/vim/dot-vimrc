@@ -107,17 +107,17 @@ let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 2
 let g:airline_theme='tender'
 
+" do not jump on save with :W
+command! W noa w
+
 " Map Ctrl-w " to horizontal split
-nnoremap <C-w>" :split<CR>
+nnoremap <C-w>\" :split<CR>
 
 " Map Ctrl-w | to vertical split
-nnoremap <C-w>| :vsplit<CR>
+nnoremap <C-w>\| :vsplit<CR>
 
 " map Ctrl+W followed by arrow keys to switch buffers
 nnoremap <C-w><Up> :bprevious<CR>
 nnoremap <C-w><Down> :bnext<CR>
 nnoremap <C-w><Left> :bprevious<CR>
 nnoremap <C-w><Right> :bnext<CR>
-
-" do not jump on save with :W
-command! W noa w
