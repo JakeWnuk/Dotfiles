@@ -1,5 +1,5 @@
 ---
-- name: Create nginx directory
+- name: Ensure nginx directory exists
   file:
     path: /etc/nginx/
     state: directory

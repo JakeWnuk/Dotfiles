@@ -29,7 +29,7 @@ export LANG=en_US.UTF-8
 # ***
 
 # Zsh Colors
-zsh_random_color=$((RANDOM 96 + 160))
+zsh_random_color=$((RANDOM % 96 + 160))
 
 # For Zsh PS1
 zsh_name_color="%F{${zsh_random_color}}"
