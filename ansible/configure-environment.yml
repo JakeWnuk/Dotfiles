@@ -13,7 +13,7 @@
 
 - name: Ensure wordlists directory exists
   file:
-    path: /usr/share/wordlists/
+    path: '/usr/share/wordlists/'
     state: directory
     mode: '0755'
 
@@ -22,6 +22,12 @@
   copy:
     src: './config/wordlists'
     dest: '/usr/share/wordlists'
+
+- name: Ensure .vim directory exists
+  file:
+    path: '~/.vim'
+    state: directory
+    mode: '0755'
 
 - name: Copy coc configuration to ~/.vim/
   become: yes
