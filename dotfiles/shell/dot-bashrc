@@ -1,12 +1,15 @@
 # History control
 shopt -s histappend
 shopt -s cdspell
-bind TAB:menu-complete
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
 
-# Mute
-bind 'set bell-style none'
+if [ -n "$PS1" ]; then
+    bind TAB:menu-complete
+    bind '"\e[A": history-search-backward'
+    bind '"\e[B": history-search-forward'
+    bind 'set show-all-if-ambiguous on'
+    bind 'set completion-ignore-case on'
+    bind 'set bell-style none'
+fi
 
 # Bash completion
 if ! shopt -oq posix; then
@@ -41,7 +44,7 @@ __prompt_command() {
         pointerC="${bash_red}"
         atC="${bash_red}"
         borderC="${bash_red}"
-    else 
+    else
         pointerC="${bash_green}"
         atC="${bash_green}"
         borderC="${bash_green}"
