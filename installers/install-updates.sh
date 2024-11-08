@@ -14,6 +14,7 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y \
     python3-venv \
     nodejs \
     dos2unix \
+    iproute2 \
     iputils-ping \
     rubygems \
     ruby-dev \
